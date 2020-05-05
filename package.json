@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/YcleptJohn/statuses/issues"
   },
-  "homepage": "https://github.com/YcleptJohn/statuses#readme"
+  "homepage": "https://github.com/YcleptJohn/statuses#readme",
+  "dependencies": {
+    "require-all": "^3.0.0"
+  }
 }
