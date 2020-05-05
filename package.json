@@ -1,0 +1,19 @@
+{
+  "name": "statuses",
+  "version": "1.0.0",
+  "description": "A package to track statuses across multiple areas of technology",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"tbc\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/YcleptJohn/statuses.git"
+  },
+  "author": "github/YcleptJohn",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/YcleptJohn/statuses/issues"
+  },
+  "homepage": "https://github.com/YcleptJohn/statuses#readme"
+}
