@@ -1,6 +1,6 @@
 const x = require('./fetchers')
 
-;(() => {
+;(async () => {
   console.log('Running...')
-  console.log(x)
+  await x.gcloud.fetch()
 })()

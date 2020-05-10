@@ -17,6 +17,8 @@
   },
   "homepage": "https://github.com/YcleptJohn/statuses#readme",
   "dependencies": {
-    "require-all": "^3.0.0"
+    "request": "^2.88.2",
+    "require-all": "^3.0.0",
+    "tiny-json-http": "^7.1.2"
   }
 }
