@@ -1,0 +1,36 @@
+https://status.cloud.google.com/incidents.json
+{
+  "begin": "2020-04-08T14:15:28Z",
+  "created": "2020-04-08T15:11:51Z",
+  "end": "2020-04-08T16:29:56Z",
+  "external_desc": "We've received a report of an issue with Cloud Dataproc.",
+  "modified": "2020-04-08T16:29:56Z",
+  "most-recent-update": {
+    "created": "2020-04-08T16:29:56Z",
+    "modified": "2020-04-08T16:29:56Z",
+    "text": "Our engineers have determined this issue to be linked to a single Google incident.\n\nFor regular status updates, please follow: https://status.cloud.google.com/incident/zall/20005.\n\nOur engineers believe that Cloud Dataproc is no longer affected by the main Google incident as of Wednesday, 2020-04-08 07:59 US/Pacific. \nNo further updates will be provided here.",
+    "when": "2020-04-08T16:29:56Z"
+  },
+  "number": 20003,
+  "public": true,
+  "service_key": "cloud-dataproc",
+  "service_name": "Google Cloud Dataproc",
+  "severity": "high",
+  "updates": [
+    {
+      "created": "2020-04-08T16:29:56Z",
+      "modified": "2020-04-08T16:29:56Z",
+      "text": "Our engineers have determined this issue to be linked to a single Google incident.\n\nFor regular status updates, please follow: https://status.cloud.google.com/incident/zall/20005.\n\nOur engineers believe that Cloud Dataproc is no longer affected by the main Google incident as of Wednesday, 2020-04-08 07:59 US/Pacific. \nNo further updates will be provided here.",
+      "when": "2020-04-08T16:29:56Z"
+    },
+    {
+      "created": "2020-04-08T15:11:51Z",
+      "modified": "2020-04-08T15:11:51Z",
+      "text": "Description: We are experiencing an issue with Cloud Dataproc\n\nOur engineering team continues to investigate the issue.\n\nFor regular status updates, please follow: https://status.cloud.google.com/incident/zall/20005.\nFurther updates here will be provided by Wednesday, 2020-04-08 13:00 US/Pacific .",
+      "when": "2020-04-08T15:11:51Z"
+    }
+  ],
+  "uri": "/incident/cloud-dataproc/20003"
+}
+
+BEAUTIFUL

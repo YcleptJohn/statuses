@@ -1,0 +1,38 @@
+https://status.aws.amazon.com/rss/elasticbeanstalk-eu-west-1.rss
+
+  <item>
+	  <title><![CDATA[Service is operating normally: [RESOLVED] Increased API Error Rates ]]></title>
+	  <link>http://status.aws.amazon.com/</link>
+	  <pubDate>Fri, 10 May 2019 02:27:25 PDT</pubDate>
+	  <guid isPermaLink="false">http://status.aws.amazon.com/#elasticbeanstalk-eu-west-1_1557480445</guid>
+	  <description><![CDATA[Between 12:43 AM and 1:24 AM PDT, we experienced increased error rates in the EU-WEST-1 Region. The issue has been resolved and the service is operating normally.]]></description>
+	 </item>
+         
+	 <item>
+	  <title><![CDATA[Informational message: Increased API Error Rates ]]></title>
+	  <link>http://status.aws.amazon.com/</link>
+	  <pubDate>Fri, 10 May 2019 02:15:54 PDT</pubDate>
+	  <guid isPermaLink="false">http://status.aws.amazon.com/#elasticbeanstalk-eu-west-1_1557479754</guid>
+	  <description><![CDATA[We have identified the root cause of increased error rates to Elastic Beanstalk APIs in the EU-WEST-1 Region and continue to work towards resolution.]]></description>
+	 </item>
+         
+	 <item>
+	  <title><![CDATA[Informational message: Increased API Error Rates ]]></title>
+	  <link>http://status.aws.amazon.com/</link>
+	  <pubDate>Fri, 10 May 2019 01:27:35 PDT</pubDate>
+	  <guid isPermaLink="false">http://status.aws.amazon.com/#elasticbeanstalk-eu-west-1_1557476855</guid>
+	  <description><![CDATA[We are currently investigating increased error rates for the Elastic Beanstalk APIs in the EU-WEST-1 Region.]]></description>
+	 </item>
+
+
+Happen in reverse order,
+guid links all seem to be dead see non-isPermaLink flag
+SOMETIMES: no [RESOLVED] so unreliable for a 'fixed' status. SO far they all seem to say 'operating normally' though?
+E.g 
+  <item>
+	  <title><![CDATA[Service is operating normally: Increased launch failures for Tomcat 6 and 7 environments]]></title>
+	  <link>http://status.aws.amazon.com/</link>
+	  <pubDate>Tue, 25 Jun 2013 19:26:21 PDT</pubDate>
+	  <guid isPermaLink="false">http://status.aws.amazon.com/#elasticbeanstalk-eu-west-1_1372213581</guid>
+	  <description><![CDATA[All existing Tomcat 6 and 7 environments are now able to scale-up. The service is operating normally.]]></description>
+	 </item>

@@ -1,0 +1,10 @@
+Bit of confusion between status API and devops status APIs,
+
+one is general 'healthy' overview with little more detail
+
+the devops API might provide more info.. found a historical RSS feed so far.. need to find ongoing info
+
+https://docs.microsoft.com/en-gb/rest/api/resourcehealth/availabilitystatuses/getbyresource ??
+all seem to be stuck behind a subscription-id which is attached to an azure subscription.. there is a free year so might be able to do that to gain access...
+does look like a valuable API 
+
