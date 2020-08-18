@@ -19,7 +19,7 @@ aws._downDetectorFetch = async () => {
 }
 
 aws.fetch = async () => {
-   console.log((await aws._rawFetchIssues()))
-  //  const r = await aws._downDetectorFetch()
-  //  console.log(r)
+  const [r1, r2] = await Promise.allSettled([aws._rawFetchIssues(), aws._downDetectorFetch()])
+  console.log('r1', r1)
+  console.log('r2', r2)
 }
