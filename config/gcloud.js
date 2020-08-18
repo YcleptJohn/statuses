@@ -1,6 +1,6 @@
 module.exports = {
   providerKey: 'gcloud',
-  providerName: 'GCloud',
+  providerName: 'Google Cloud',
   hasRegions: false,
   fetchUrl: 'https://status.cloud.google.com/incidents.json',
   downDetectorIdentifier: 'google-cloud'

@@ -4,7 +4,7 @@ const transformer = require('../transformers/gcloud.js')
 const tiny = require('tiny-json-http')
 
 gcloud._rawFetchIssues = async () => {
-  return tiny.get({ url: config.fetchUrl })
+  return tiny.get({ url: config.gcloud.fetchUrl })
 }
 
 // Temporarily suspending tweet volume fetching -
