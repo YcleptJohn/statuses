@@ -1,0 +1,31 @@
+{
+  uiMeta: { // Pull from config -- array of "metaFields: ['providerKey'] that is filtered to make obj?
+    providerKey: 'gcloud',
+    providerName: 'Google Cloud',
+    providerLogo: '//assets/gcloud.png',
+    labels: ['Deploy', 'Hosting', 'CI'], // for filterable selections
+    regions: [],
+    statusPageUrl: 'https://',
+    historicalStatusPageUrl: 'https://'
+  }
+  ongoingIncidents: incident[],
+  recentIncidents: incident[],
+  downDetectorReports: 'high' | 'moderate' | 'low/avg'
+}
+
+incident: {
+  startTime: '', // When the issue first happened (only easily available from google)
+  creationTime: '', // First publish of a status 
+  resolutionTime: '', // Last publish of a resolution
+  service: {
+    key: 'gcloud-dataproc',
+    name: 'Google Cloud Dataproc'
+  }
+  affectedRegions: [] // Not always known and sometimes will be parse-based
+  shortSummary: '',
+  updates: [{
+    time: '',
+    text: ''
+  }],
+  directUri: '' // For the providers who have links to incident (google)
+}
