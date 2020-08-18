@@ -26,12 +26,12 @@
   },
   "homepage": "https://github.com/YcleptJohn/statuses#readme",
   "dependencies": {
-    "request": "^2.88.2",
-    "require-all": "^3.0.0",
-    "tiny-json-http": "^7.1.2",
+    "node-fetch": "^2.6.0",
     "preact": "^10.3.2",
     "preact-render-to-string": "^5.1.4",
-    "preact-router": "^3.2.1"
+    "preact-router": "^3.2.1",
+    "request": "^2.88.2",
+    "require-all": "^3.0.0"
   },
   "devDependencies": {
     "enzyme": "^3.10.0",
