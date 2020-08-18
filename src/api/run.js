@@ -2,5 +2,5 @@ const x = require('./fetchers')
 
 ;(async () => {
   console.log('Running...')
-  await x.aws.fetch()
+  await x.azure.fetch()
 })()
