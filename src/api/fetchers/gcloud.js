@@ -1,10 +1,13 @@
 const gcloud = module.exports = {}
 const config = require('../../../config')
 const transformer = require('../transformers/gcloud.js')
-const tiny = require('tiny-json-http')
+const simpleFetch = require('../../lib/simpleFetch.js')
 
 gcloud._rawFetchIssues = async () => {
-  return tiny.get({ url: config.gcloud.fetchUrl })
+  return simpleFetch.json(
+    config.gcloud.fetchUrl,
+    'gcloud raw issues fetch'
+  )
 }
 
 // Temporarily suspending tweet volume fetching -
@@ -12,9 +15,13 @@ gcloud._rawFetchIssues = async () => {
 // so will consider just embedding a recent tweet window into appropriate locations..
 // probable if people check a specific service instead of the overview
 gcloud._tweetVolumeFetch = async () => {}
+
 gcloud._downDetectorFetch = async () => {
   const url = config.global.downDetectorUrl.replace('%SERVICE_NAME%', config.gcloud.downDetectorIdentifier)
-  return tiny.get({ url })
+  return simpleFetch.html(
+    url,
+    'gcloud down detector fetch'
+  )
   /*
   console.log('No problems', r.body.includes('No problems at'))
   console.log('Possible problems', r.body.includes('Possible problems at'))
@@ -26,7 +33,7 @@ gcloud._downDetectorFetch = async () => {
 gcloud.fetch = async () => {
   // Check cache for a transformed object, return it if found
   // Otherwise fetch+transform, cache(1min ttl) and return
-  // console.log((await gcloud._rawFetchIssues()).body)
+  // console.log((await gcloud._rawFetchIssues()))
   const r = await gcloud._downDetectorFetch()
-  console.log(r.body)
+  console.log(r)
 }
