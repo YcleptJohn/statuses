@@ -26,6 +26,7 @@
   },
   "homepage": "https://github.com/YcleptJohn/statuses#readme",
   "dependencies": {
+    "moment": "^2.27.0",
     "node-fetch": "^2.6.0",
     "preact": "^10.3.2",
     "preact-render-to-string": "^5.1.4",
