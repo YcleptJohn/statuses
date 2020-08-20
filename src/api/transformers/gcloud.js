@@ -2,41 +2,14 @@ const gcloud = module.exports = {}
 const moment = require('moment')
 const config = require('../../../config').gcloud
 const ddParser = require('../../lib/downDetectorParser.js')
+const shared = require('./shared.js')
 
-gcloud._uiMeta = (affectedRegions) => {
-  const relevantKeys = [
-    'providerKey',
-    'providerName',
-    'providerLogo',
-    'labels',
-    'statusPageUrl',
-    'historicalStatusPageUrl'
-  ]
-  return {
-    ...Object.fromEntries(Object.entries(config).filter(c => relevantKeys.includes(c[0]))),
-    affectedRegions: affectedRegions || []
-  }
-}
+gcloud._uiMeta = (affectedRegions) => shared._uiMeta(affectedRegions, config)
 
 gcloud._isOngoing = (incident) => incident.begin && (!incident.end || incident.end === null)
 gcloud._isRecent = (incident) => moment().subtract(2, 'days').isBefore(moment(incident.end))
 
-gcloud._splitIncidents = (incidents) => {
-  if (!incidents || !Array.isArray(incidents)) return [null, null]
-  let ongoing = []
-  let recent = []
-  for (let i = 0; i < incidents.length; i++) {
-    if (gcloud._isOngoing(incidents[i])) {
-      ongoing.push(incidents[i])
-      continue
-    }
-    if (gcloud._isRecent(incidents[i])) {
-      recent.push(incidents[i])
-      continue
-    }
-  }
-  return [ongoing, recent]
-}
+gcloud._splitIncidents = (incidents) => shared._splitIncidents(incidents, gcloud._isOngoing, gcloud._isRecent)
 
 gcloud._transformIncident = (incident) => {
   if (!incident) return null

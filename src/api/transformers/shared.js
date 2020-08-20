@@ -15,6 +15,10 @@ shared._uiMeta = (affectedRegions, config) => {
   }
 }
 
+/*
+  Now only used by gcloud as AWS ended up being finnicky. Will keep for now but consider
+  moving back to unique functions if future transformers can't make use of it also.
+*/
 shared._splitIncidents = (incidents, ongoingClassifierFunc, recentClassifierFunc) => {
   if (!incidents || !Array.isArray(incidents)) return [null, null]
   let ongoing = []
@@ -22,11 +26,11 @@ shared._splitIncidents = (incidents, ongoingClassifierFunc, recentClassifierFunc
   for (let i = 0; i < incidents.length; i++) {
     if (ongoingClassifierFunc(incidents[i])) {
       ongoing.push(incidents[i])
-      break
+      continue
     }
     if (recentClassifierFunc(incidents[i])) {
       recent.push(incidents[i])
-      break
+      continue
     }
   }
   return [ongoing, recent]
