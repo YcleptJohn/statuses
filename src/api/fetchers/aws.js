@@ -19,7 +19,6 @@ aws._downDetectorFetch = async () => {
 }
 
 aws.fetch = async () => {
-  const [r1, r2] = await Promise.allSettled([aws._rawFetchIssues(), aws._downDetectorFetch()])
-  console.log('r1', r1)
-  console.log('r2', r2)
+  const [raw, ddData] = await Promise.allSettled([aws._rawFetchIssues(), aws._downDetectorFetch()])
+  return transformer.v1(raw.value, ddData.value)
 }
