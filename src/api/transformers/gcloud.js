@@ -4,7 +4,7 @@ const config = require('../../../config').gcloud
 const ddParser = require('../../lib/downDetectorParser.js')
 const shared = require('./shared.js')
 
-gcloud._uiMeta = (affectedRegions) => shared._uiMeta(affectedRegions, config)
+gcloud._uiMeta = shared._uiMeta
 
 gcloud._isOngoing = (incident) => incident.begin && (!incident.end || incident.end === null)
 gcloud._isRecent = (incident) => moment().subtract(2, 'days').isBefore(moment(incident.end))
@@ -32,7 +32,7 @@ gcloud.v1 = (raw, ddData) => {
   const [ongoing, recent] = gcloud._splitIncidents(raw)
 
   return {
-    uiMeta: gcloud._uiMeta(),
+    uiMeta: gcloud._uiMeta(config),
     ongoingIncidents: ongoing && ongoing.map(gcloud._transformIncident) || null,
     recentIncidents: recent && recent.map(gcloud._transformIncident) || null,
     downDetectorData: ddParser.jsonOverview(ddData)
