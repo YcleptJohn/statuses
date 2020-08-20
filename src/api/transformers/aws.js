@@ -13,7 +13,7 @@ aws._isOngoing = (incident) => {
   return isRelevant && !looksResolved
 }
 
-aws._isRecent = (incident) => moment().subtract(2, 'days').isBefore(moment(parseInt(incident.date, 10)))
+aws._isRecent = (incident) => moment().subtract(2, 'days').isBefore(moment.unix(incident.date))
 
 aws._splitIncidents = (incidents) => {
   let ongoing = []
@@ -48,7 +48,7 @@ aws._transformIncident = (incident) => {
       key: incident.service,
       name: incident.service_name
     },
-    affectedRegions: [], // Can calculate from service ... need to check all values
+    affectedRegions: config.knownRegions.filter(region => incident.service.includes(region)),
     shortSummary: incident.summary,
     updates: aws._extractUpdates(incident.description),
     directUri: null
