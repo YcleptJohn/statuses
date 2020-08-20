@@ -15,7 +15,7 @@
 
 incident: {
   startTime: '', // When the issue first happened (only easily available from google)
-  creationTime: '', // First publish of a status 
+  creationTime: '', // First publish of a status
   resolutionTime: '', // Last publish of a resolution
   service: {
     key: 'gcloud-dataproc',

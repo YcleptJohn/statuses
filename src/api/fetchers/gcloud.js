@@ -35,6 +35,6 @@ gcloud.fetch = async () => {
   // Otherwise fetch+transform, cache(1min ttl) and return
   const [raw, ddData] = await Promise.allSettled([gcloud._rawFetchIssues(), gcloud._downDetectorFetch()])
   // Check if raw.value exists or if raw.status === 'fulfilled' and error/return early if not
-  const result = transformer.v1(raw.value, ddData)
+  const result = transformer.v1(raw.value, ddData.value)
   console.log(JSON.stringify(result, null, 2))
 }

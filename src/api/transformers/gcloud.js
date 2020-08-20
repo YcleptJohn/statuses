@@ -1,6 +1,7 @@
 const gcloud = module.exports = {}
 const moment = require('moment')
 const config = require('../../../config').gcloud
+const ddParser = require('../../lib/downDetectorParser.js')
 
 gcloud._uiMeta = (affectedRegions) => {
   const relevantKeys = [
@@ -58,6 +59,7 @@ gcloud.v1 = (raw, ddData) => {
   return {
     uiMeta: gcloud._uiMeta(),
     ongoingIncidents: ongoing.map(gcloud._transformIncident),
-    recentIncidents: recent.map(gcloud._transformIncident)
+    recentIncidents: recent.map(gcloud._transformIncident),
+    downDetectorData: ddParser.jsonOverview(ddData)
   }
 }
