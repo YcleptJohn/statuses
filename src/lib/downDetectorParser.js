@@ -2,6 +2,7 @@ const ddParser = module.exports = {}
 const { parse } = require('node-html-parser')
 
 ddParser.jsonOverview = (ddHtml) => {
+  if (!ddHtml) return null
   const fakeDom = parse(ddHtml, { script: true })
   const reportVolume = ddParser._getReportVolume(fakeDom.querySelector('.entry-title').innerHTML)
   const chartData = ddParser._extractChartData(fakeDom.querySelector('#chart-row').innerHTML)

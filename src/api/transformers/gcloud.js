@@ -18,10 +18,11 @@ gcloud._uiMeta = (affectedRegions) => {
   }
 }
 
-gcloud._isOngoing = (incident) => incident.begin && !incident.end || [null, undefined, '', 'TBC', 'TBA'].includes(incident.end)
+gcloud._isOngoing = (incident) => incident.begin && (!incident.end || [null, undefined, '', 'TBC', 'TBA'].includes(incident.end))
 gcloud._isRecent = (incident) => moment().subtract(25, 'days').isBefore(moment(incident.end))
 
 gcloud._splitIncidents = (incidents) => {
+  if (!incidents || !Array.isArray(incidents)) return [null, null]
   let ongoing = []
   let recent = []
   for (let i = 0; i < incidents.length; i++) {
@@ -38,6 +39,7 @@ gcloud._splitIncidents = (incidents) => {
 }
 
 gcloud._transformIncident = (incident) => {
+  if (!incident) return null
   return {
     startTime: incident.begin,
     creationTime: incident.created,
@@ -58,8 +60,8 @@ gcloud.v1 = (raw, ddData) => {
 
   return {
     uiMeta: gcloud._uiMeta(),
-    ongoingIncidents: ongoing.map(gcloud._transformIncident),
-    recentIncidents: recent.map(gcloud._transformIncident),
+    ongoingIncidents: ongoing && ongoing.map(gcloud._transformIncident) || null,
+    recentIncidents: recent && recent.map(gcloud._transformIncident) || null,
     downDetectorData: ddParser.jsonOverview(ddData)
   }
 }
