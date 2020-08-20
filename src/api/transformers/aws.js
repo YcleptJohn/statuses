@@ -1,5 +1,67 @@
 const aws = module.exports = {}
+const moment = require('moment')
+const config = require('../../../config').aws
+const ddParser = require('../../lib/downDetectorParser.js')
+const shared = require('./shared.js')
+const { parse } = require('node-html-parser')
 
-aws.overview = () => {
-  
+aws._uiMeta = (affectedRegions) => shared._uiMeta(affectedRegions, config)
+
+aws._isOngoing = (incident) => {
+  const looksResolved = incident.summary.trim().startsWith('[RESOLVED]')
+  const isRelevant = moment().subtract(4, 'days').isBefore(moment(parseInt(incident.date, 10)))
+  return isRelevant && !looksResolved
+}
+
+aws._isRecent = (incident) => moment().subtract(2, 'days').isBefore(moment(parseInt(incident.date, 10)))
+
+aws._splitIncidents = (incidents) => {
+  let ongoing = []
+  let recent = []
+  if (incidents.archive) {
+    recent = incidents.archive.filter(aws._isRecent)
+  }
+  if (incidents.current) {
+    // Since AWS 'current' includes resolved incidents, manually move those that seem resolved
+    incidents.current.forEach(incident => {
+      if (!aws._isOngoing(incident)) recent.push(incident)
+      else ongoing.push(incident)
+    })
+  }
+  return [ongoing, recent]
+}
+
+aws._extractUpdates = (description) => {
+  const dom = parse(description)
+  const times = dom.childNodes.map(x => x.firstChild.text.trim())
+  const messages = dom.childNodes.map((x, i) => x.text.replace(times[i], '').trim())
+  return new Array(messages.length).fill(null).map((x, i) => ({ time: times[i], text: messages[i] }))
+}
+
+aws._transformIncident = (incident) => {
+  if (!incident) return null
+  return {
+    startTime: incident.date,
+    creationTime: null,
+    resolutionTime: null,
+    service: {
+      key: incident.service,
+      name: incident.service_name
+    },
+    affectedRegions: [], // Can calculate from service ... need to check all values
+    shortSummary: incident.summary,
+    updates: aws._extractUpdates(incident.description),
+    directUri: null
+  }
+}
+
+aws.v1 = (raw, ddData) => {
+  const [ongoing, recent] = aws._splitIncidents(raw)
+
+  return {
+    uiMeta: aws._uiMeta(),
+    ongoingIncidents: ongoing && ongoing.map(aws._transformIncident) || null,
+    recentIncidents: recent && recent.map(aws._transformIncident) || null,
+    downDetectorData: ddParser.jsonOverview(ddData)
+  }
 }
