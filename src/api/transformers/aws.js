@@ -5,7 +5,7 @@ const ddParser = require('../../lib/downDetectorParser.js')
 const shared = require('./shared.js')
 const { parse } = require('node-html-parser')
 
-aws._uiMeta = (affectedRegions) => shared._uiMeta(affectedRegions, config)
+aws._uiMeta = shared._uiMeta
 
 aws._isOngoing = (incident) => {
   const looksResolved = incident.summary.trim().startsWith('[RESOLVED]')
@@ -59,7 +59,7 @@ aws.v1 = (raw, ddData) => {
   const [ongoing, recent] = aws._splitIncidents(raw)
 
   return {
-    uiMeta: aws._uiMeta(),
+    uiMeta: aws._uiMeta(config),
     ongoingIncidents: ongoing && ongoing.map(aws._transformIncident) || null,
     recentIncidents: recent && recent.map(aws._transformIncident) || null,
     downDetectorData: ddParser.jsonOverview(ddData)

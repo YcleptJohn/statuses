@@ -1,6 +1,6 @@
 const shared = module.exports = {}
 
-shared._uiMeta = (affectedRegions, config) => {
+shared._uiMeta = (config) => {
   const relevantKeys = [
     'providerKey',
     'providerName',
@@ -10,8 +10,7 @@ shared._uiMeta = (affectedRegions, config) => {
     'historicalStatusPageUrl'
   ]
   return {
-    ...Object.fromEntries(Object.entries(config).filter(c => relevantKeys.includes(c[0]))),
-    affectedRegions: affectedRegions || []
+    ...Object.fromEntries(Object.entries(config).filter(c => relevantKeys.includes(c[0])))
   }
 }
 
