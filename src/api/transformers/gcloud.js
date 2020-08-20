@@ -19,7 +19,7 @@ gcloud._uiMeta = (affectedRegions) => {
 }
 
 gcloud._isOngoing = (incident) => incident.begin && (!incident.end || [null, undefined, '', 'TBC', 'TBA'].includes(incident.end))
-gcloud._isRecent = (incident) => moment().subtract(25, 'days').isBefore(moment(incident.end))
+gcloud._isRecent = (incident) => moment().subtract(2, 'days').isBefore(moment(incident.end))
 
 gcloud._splitIncidents = (incidents) => {
   if (!incidents || !Array.isArray(incidents)) return [null, null]
