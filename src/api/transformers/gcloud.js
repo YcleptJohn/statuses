@@ -18,7 +18,7 @@ gcloud._uiMeta = (affectedRegions) => {
   }
 }
 
-gcloud._isOngoing = (incident) => incident.begin && (!incident.end || [null, undefined, '', 'TBC', 'TBA'].includes(incident.end))
+gcloud._isOngoing = (incident) => incident.begin && (!incident.end || incident.end === null)
 gcloud._isRecent = (incident) => moment().subtract(2, 'days').isBefore(moment(incident.end))
 
 gcloud._splitIncidents = (incidents) => {
@@ -28,11 +28,11 @@ gcloud._splitIncidents = (incidents) => {
   for (let i = 0; i < incidents.length; i++) {
     if (gcloud._isOngoing(incidents[i])) {
       ongoing.push(incidents[i])
-      break
+      continue
     }
     if (gcloud._isRecent(incidents[i])) {
       recent.push(incidents[i])
-      break
+      continue
     }
   }
   return [ongoing, recent]
