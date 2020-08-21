@@ -1,6 +1,7 @@
 const azure = module.exports = {}
 const config = require('../../../config')
 const simpleFetch = require('../../lib/simpleFetch.js')
+const transformer = require('../transformers/azure.js')
 
 azure._rawFetchIssues = async () => {
   return simpleFetch.rss(
@@ -18,6 +19,6 @@ azure._downDetectorFetch = async () => {
 }
 
 azure.fetch = async () => {
-  const r = await azure._rawFetchIssues()
-  console.log(r)
+  const [raw, ddData] = await Promise.allSettled([azure._rawFetchIssues(), azure._downDetectorFetch()])
+  return transformer.v1(raw.value && raw.value.items, ddData.value)
 }
