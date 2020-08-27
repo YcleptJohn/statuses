@@ -5,7 +5,7 @@ const ddParser = require('../lib/downDetectorParser.js')
 const shared = require('./shared.js')
 const { parse } = require('node-html-parser')
 
-aws._uiMeta = shared._uiMeta
+aws._uiMeta = shared.uiMeta
 
 aws._isOngoing = (incident) => {
   const looksResolved = incident.summary.trim().startsWith('[RESOLVED]')

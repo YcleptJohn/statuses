@@ -1,6 +1,6 @@
 const shared = module.exports = {}
 
-shared._uiMeta = (config) => {
+shared.uiMeta = (config) => {
   const relevantKeys = [
     'providerKey',
     'providerName',

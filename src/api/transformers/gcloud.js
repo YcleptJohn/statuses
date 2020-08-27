@@ -4,7 +4,7 @@ const config = require('../../../config').gcloud
 const ddParser = require('../lib/downDetectorParser.js')
 const shared = require('./shared.js')
 
-gcloud._uiMeta = shared._uiMeta
+gcloud._uiMeta = shared.uiMeta
 
 gcloud._isOngoing = (incident) => incident.begin && (!incident.end || incident.end === null)
 gcloud._isRecent = (incident) => moment().subtract(2, 'days').isBefore(moment(incident.end))

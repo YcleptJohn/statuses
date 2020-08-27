@@ -5,7 +5,7 @@ const ddParser = require('../lib/downDetectorParser.js')
 const shared = require('./shared.js')
 const { parse } = require('node-html-parser')
 
-azure._uiMeta = shared._uiMeta
+azure._uiMeta = shared.uiMeta
 
 azure._isResolved = (incident) => incident.contentSnippet.toLowerCase().includes('Final update')
 
