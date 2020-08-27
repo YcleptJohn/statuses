@@ -1,7 +1,7 @@
 const gcloud = module.exports = {}
 const moment = require('moment')
 const config = require('../../../config').gcloud
-const ddParser = require('../../lib/downDetectorParser.js')
+const ddParser = require('../lib/downDetectorParser.js')
 const shared = require('./shared.js')
 
 gcloud._uiMeta = shared._uiMeta

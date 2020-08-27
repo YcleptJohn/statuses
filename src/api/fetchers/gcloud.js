@@ -1,7 +1,7 @@
 const gcloud = module.exports = {}
 const config = require('../../../config')
 const transformer = require('../transformers/gcloud.js')
-const simpleFetch = require('../../lib/simpleFetch.js')
+const simpleFetch = require('../lib/simpleFetch.js')
 
 gcloud._rawFetchIssues = async () => {
   return simpleFetch.json(

@@ -1,7 +1,7 @@
 const aws = module.exports = {}
 const config = require('../../../config')
 const transformer = require('../transformers/aws.js')
-const simpleFetch = require('../../lib/simpleFetch.js')
+const simpleFetch = require('../lib/simpleFetch.js')
 
 aws._rawFetchIssues = async () => {
   return simpleFetch.json(
