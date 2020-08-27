@@ -1,6 +1,6 @@
 const azure = module.exports = {}
 const config = require('../../../config')
-const simpleFetch = require('../../lib/simpleFetch.js')
+const simpleFetch = require('../lib/simpleFetch.js')
 const transformer = require('../transformers/azure.js')
 
 azure._rawFetchIssues = async () => {

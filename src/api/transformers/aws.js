@@ -1,7 +1,7 @@
 const aws = module.exports = {}
 const moment = require('moment')
 const config = require('../../../config').aws
-const ddParser = require('../../lib/downDetectorParser.js')
+const ddParser = require('../lib/downDetectorParser.js')
 const shared = require('./shared.js')
 const { parse } = require('node-html-parser')
 
