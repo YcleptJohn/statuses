@@ -3,13 +3,11 @@
   "version": "1.0.0",
   "description": "A package to track statuses across multiple areas of technology",
   "scripts": {
-    "build": "preact build",
+    "build": "preact build --src src/ui",
     "serve": "sirv build --port 8080 --cors --single",
-    "dev": "preact watch",
+    "dev": "preact watch --src src/ui",
     "lint": "eslint src",
-    "test": "jest",
-    "css-build": "node-sass --omit-source-map-url src/sass/all.scss dist/all.css",
-    "css-watch": "npm run css-build -- --watch"
+    "test": "jest"
   },
   "eslintConfig": {
     "extends": "preact",
@@ -29,6 +27,7 @@
   "homepage": "https://github.com/YcleptJohn/statuses#readme",
   "dependencies": {
     "bulma": "^0.9.0",
+    "express": "^4.17.1",
     "moment": "^2.27.0",
     "node-fetch": "^2.6.0",
     "node-html-parser": "^1.2.20",
@@ -36,7 +35,8 @@
     "preact-render-to-string": "^5.1.4",
     "preact-router": "^3.2.1",
     "require-all": "^3.0.0",
-    "rss-parser": "^3.9.0"
+    "rss-parser": "^3.9.0",
+    "sass-loader": "^10.0.1"
   },
   "devDependencies": {
     "enzyme": "^3.10.0",

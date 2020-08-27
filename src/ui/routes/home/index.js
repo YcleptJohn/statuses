@@ -1,4 +1,5 @@
 import { h, Component } from 'preact';
+import './style.scss';
 
 class Home extends Component {
 	state = {
