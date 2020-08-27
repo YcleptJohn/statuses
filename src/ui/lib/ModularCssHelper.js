@@ -7,9 +7,9 @@ export default class ModularCssHelper {
   ss(classString) {
     let converted = ''
     try {
-      converted = classString.split(' ').map(x => this.styleObject[x])
+      converted = classString.split(' ').map(x => this.styleObject[x] || x || '')
     } catch (e) {
-      console.warn('Failed to convert CSS to modular classes')
+      console.warn('Failed to convert CSS to modular classes', e)
     }
 	  return converted.join(' ')
   }
