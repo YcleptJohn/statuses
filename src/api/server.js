@@ -1,12 +1,14 @@
 const express = require('express')
 const path = require('path')
 const helmet = require('helmet')
+const cors = require('cors')
 
 const router = express()
 
 router.use(express.static(path.resolve(__dirname, '..', '..', 'build')))
 router.use(express.json())
 router.use(helmet())
+router.use(cors())
 
 router.route('/api/*')
   .get((req, res, next) => {
