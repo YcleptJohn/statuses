@@ -22,6 +22,8 @@ class Home extends Component {
 		const { services } = this.state
 		services.names.forEach(name => {
 			this.changeStatus(name, statuses.IN_PROGRESS)
+			// Need to make this cancellable in some way to stop this.setStates() if a delayed fetch
+      // arrives after an unmount
 			fetch(`http://localhost:9999/api/fetch/${name}`)
 				.then(res => res.json())
 				.catch(() => this.changeStatus(name, statuses.COMPLETED_ERRONEOUSLY))

@@ -25,6 +25,8 @@ export default class Service extends Component {
     const { service } = this.state
     if (!service.config || !service.meta) return route('/')
     this.changeStatus(statuses.IN_PROGRESS)
+    // Need to make this cancellable in some way to stop this.setStates() if a delayed fetch
+    // arrives after an unmount
     fetch(`http://localhost:9999/api/fetch/${this.state.serviceKey}`)
       .then(res => res.json())
       .catch(() => this.changeStatus(statuses.COMPLETED_ERRONEOUSLY))
