@@ -58,7 +58,7 @@ class Home extends Component {
 					return (
 						<Card
 							key={sName}
-							meta={services.metas.filter(x => x.providerKey === sName)}
+							meta={services.metas.filter(x => x.providerKey === sName)[0]}
 							status={fetchStatuses[sName]}
 							data={data[sName]}
 						/>
