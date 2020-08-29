@@ -4,6 +4,7 @@ import ModularCssHelper from '../../lib/ModularCssHelper.js';
 import Services from '../../lib/Services.js'
 import statuses from '../../lib/statusConstants.js'
 import DetailedPanel from '../../components/detailedPanel';
+import { route } from 'preact-router';
 
 const c = new ModularCssHelper(style)
 
@@ -12,7 +13,6 @@ export default class Service extends Component {
     super()
     const { key } = props.matches
     const service = (new Services()).getByKey(key)
-    // If service doesn't exist, re-route back to home
     this.state = {
       serviceKey: key,
       service,
@@ -22,6 +22,8 @@ export default class Service extends Component {
   }
 
   async componentDidMount() {
+    const { service } = this.state
+    if (!service.config || !service.meta) return route('/')
     this.changeStatus(statuses.IN_PROGRESS)
     fetch(`http://localhost:9999/api/fetch/${this.state.serviceKey}`)
       .then(res => res.json())
