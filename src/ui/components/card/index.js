@@ -23,7 +23,7 @@ const Card = ({ meta, status, data }) => {
         </header>
         <div class={c.ss('card-content')}>
           <div class='has-text-centered'>
-            <img src={`/assets/${meta.providerLogo}`} width='256' height='256' class='w-50 h-50' />
+            <img src={`/assets/${meta.providerLogo}`} width='256' height='256' class={c.ss('scaled-logo')} />
           </div>
           <div class={c.ss('content')}>
             {status === statuses.IN_PROGRESS && <progress class={c.ss('progress is-small is-primary')} max='100' />}
