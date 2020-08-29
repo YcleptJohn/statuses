@@ -3,6 +3,7 @@ import style from './style.scss';
 import ModularCssHelper from '../../lib/ModularCssHelper.js';
 import Services from '../../lib/Services.js'
 import statuses from '../../lib/statusConstants.js'
+import DetailedPanel from '../../components/detailedPanel';
 
 const c = new ModularCssHelper(style)
 
@@ -10,10 +11,11 @@ export default class Service extends Component {
   constructor(props) {
     super()
     const { key } = props.matches
-    const serviceInfo = (new Services()).getByKey(key)
+    const service = (new Services()).getByKey(key)
+    // If service doesn't exist, re-route back to home
     this.state = {
-      key,
-      ...serviceInfo,
+      serviceKey: key,
+      service,
       fetchStatus: statuses.PENDING,
       data: null
     }
@@ -21,7 +23,7 @@ export default class Service extends Component {
 
   async componentDidMount() {
     this.changeStatus(statuses.IN_PROGRESS)
-    fetch(`http://localhost:9999/api/fetch/${this.state.key}`)
+    fetch(`http://localhost:9999/api/fetch/${this.state.serviceKey}`)
       .then(res => res.json())
       .catch(() => this.changeStatus(statuses.COMPLETED_ERRONEOUSLY))
       .then(data => {
@@ -34,8 +36,11 @@ export default class Service extends Component {
   changeStatus(fetchStatus) { this.setState({ fetchStatus }) }
   setData(data) { this.setState({ data }) }
 
-  render(props) {
-    const { key } = props.matches
-    return <p>You want to view {key}</p>
+  render() {
+    return (
+      <div class={c.ss('container')}>
+        <DetailedPanel {...this.state} />
+      </div>
+    )
   }
 }
