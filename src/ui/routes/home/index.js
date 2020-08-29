@@ -10,7 +10,7 @@ const c = new ModularCssHelper(style)
 class Home extends Component {
 	constructor() {
 		super()
-		const services = (new Services()).get()
+		const services = (new Services()).getAll()
 		this.state = {
 			services,
 			fetchStatuses: Object.fromEntries(services.names.map(sName => [sName, statuses.PENDING])),
