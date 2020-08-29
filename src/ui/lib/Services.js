@@ -10,11 +10,18 @@ const configs = [aws, azure, gcloud]
 const metas = configs.map(c => uiMeta(c))
 
 export default class Services {
-  get() {
+  getAll() {
     return {
       names: metas.map(m => m.providerKey),
       configs,
       metas
+    }
+  }
+
+  getByKey(key) {
+    return {
+      config: configs.filter(conf => conf.providerKey === key)[0],
+      meta: metas.filter(meta => meta.providerKey === key)[0]
     }
   }
 }
