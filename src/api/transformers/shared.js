@@ -7,7 +7,8 @@ shared.uiMeta = (config) => {
     'providerLogo',
     'labels',
     'statusPageUrl',
-    'historicalStatusPageUrl'
+    'historicalStatusPageUrl',
+    'downDetectorIdentifier'
   ]
   return {
     ...Object.fromEntries(Object.entries(config).filter(c => relevantKeys.includes(c[0])))
