@@ -34,7 +34,7 @@ const Card = ({ meta, status, data }) => {
           </div>
         </div>
         <footer class={c.ss('card-footer')}>
-          <a href='#' class={c.ss('card-footer-item')}>See More</a>
+          <a href={`/service/${meta.providerKey}`} class={c.ss('card-footer-item')}>See More</a>
         </footer>
       </div>
     </div>
