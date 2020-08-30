@@ -16,11 +16,11 @@ const CollapsibleIncidents = ({ type, data, id }) => {
 
   return (
     <>
-      <div class={c.ss(`collapsible-header ${isCollapsed ? 'active' : ''}`)} onClick={toggleCollapse}>
+      <div class={c.ss(`collapsible-header mt-3 ${isCollapsed ? 'active' : ''}`)} onClick={toggleCollapse}>
         <h5 class={c.ss('title is-5 is-capitalized has-text-centered')}>
-          {type}
+          {type}&nbsp;Incidents
           <span class={c.ss('is-pulled-right')}>
-            <span class={c.ss('icon has-text-primary')}>
+            <span class={c.ss('icon has-text-primary-dark')}>
               {!isCollapsed
               ? <i class='fas fa-plus' />
               : <i class='fas fa-minus' />}
@@ -30,7 +30,9 @@ const CollapsibleIncidents = ({ type, data, id }) => {
         {type === 'recent' && <h6 class={c.ss('subtitle is-6 has-text-centered mr-5')}>within 48 hours</h6>}
       </div>
       <div id={`collapsible-content-${type}`} class={c.ss(`collapsible-content`)}>
-        Content
+        <div class={c.ss('pt-6 pl-6 pr-6 pb-6')}>
+          Content
+        </div>
       </div>
     </>
   )

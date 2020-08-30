@@ -3,23 +3,24 @@
 @import "../../../../node_modules/bulma/sass/elements/icon.sass";
 
 .collapsible-header {
-  background-color: darkgrey;
+  background-color: $grey-lighter;
   padding: 10px;
-  border-top-right-radius: 5px;
-  border-top-left-radius: 5px;
   cursor: pointer;
 }
 
 .collapsible-header:hover {
-  background-color: blue;
+  background-color: $grey-light;
 }
 
 .collapsible-header.active {
-  background-color: pink;
+  background-color: $grey-light;
 }
 
 .collapsible-content {
+  background-color: $grey-lightest;
   max-height: 0;
   overflow: hidden;
   transition: max-height 0.2s ease-out;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
 }

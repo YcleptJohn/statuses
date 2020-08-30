@@ -3,28 +3,21 @@
 @import url('https://fonts.googleapis.com/css?family=Red+Rose:400,700');
 
 // Set your brand colors
-$purple: #8A4D76;
-$pink: #FA7C91;
-$brown: #757763;
-$beige-light: #D0D1CD;
+$blue: #46b3e6;
+$darker: #4d80e4;
 $beige-lighter: #EFF0EB;
 $warning-orange: #FFA500;
 
 // Update Bulma's global variables
-$family-sans-serif: "Nunito", sans-serif;
-$grey-dark: $brown;
-$grey-light: $beige-light;
-$primary: $purple;
-$link: $pink;
+$family-sans-serif: "Red+Rose", sans-serif;
+$primary: $blue;
+$link: $darker;
 $widescreen-enabled: false;
 $fullhd-enabled: false;
 $warning: $warning-orange;
 
 // Update some of Bulma's component variables
 $body-background-color: $beige-lighter;
-$control-border-width: 2px;
-$input-border-color: transparent;
-$input-shadow: none;
 
 // Always need utilities imported BEFORE bulma components so makes sense in brand
 @import "../../../node_modules/bulma/sass/utilities/_all.sass";
