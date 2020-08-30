@@ -27,4 +27,4 @@ $input-border-color: transparent;
 $input-shadow: none;
 
 // Always need utilities imported BEFORE bulma components so makes sense in brand
-@import "bulma/sass/utilities/_all.sass";
+@import "../../../node_modules/bulma/sass/utilities/_all.sass";

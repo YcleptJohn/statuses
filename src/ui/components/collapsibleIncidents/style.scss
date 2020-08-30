@@ -1,0 +1,25 @@
+@import "../../sass/brand.scss";
+@import "../../../../node_modules/bulma/sass/elements/title.sass";
+@import "../../../../node_modules/bulma/sass/elements/icon.sass";
+
+.collapsible-header {
+  background-color: darkgrey;
+  padding: 10px;
+  border-top-right-radius: 5px;
+  border-top-left-radius: 5px;
+  cursor: pointer;
+}
+
+.collapsible-header:hover {
+  background-color: blue;
+}
+
+.collapsible-header.active {
+  background-color: pink;
+}
+
+.collapsible-content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.2s ease-out;
+}
