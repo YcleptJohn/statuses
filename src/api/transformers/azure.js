@@ -7,7 +7,7 @@ const { parse } = require('node-html-parser')
 
 azure._uiMeta = shared.uiMeta
 
-azure._isResolved = (incident) => incident.contentSnippet.toLowerCase().includes('Final update')
+azure._isResolved = (incident) => incident.contentSnippet.toLowerCase().includes('final update')
 
 azure._isOngoing = (incident) => {
   const isRelevant = moment().subtract(4, 'days').isBefore(moment(incident.isoDate))
