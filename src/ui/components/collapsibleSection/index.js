@@ -1,14 +1,14 @@
-import { h, Component } from 'preact';
+import { h } from 'preact';
 import style from './style.scss';
 import ModularCssHelper from '../../lib/ModularCssHelper.js';
 import { useState } from 'preact/hooks';
-import statuses from '../../lib/statusConstants.js';
 
 const c = new ModularCssHelper(style)
-const CollapsibleIncidents = ({ type, data, id }) => {
+
+const CollapsibleSection = ({ id, title, subTitle, children }) => {
   const [isCollapsed, setCollapsed] = useState(false)
   const toggleCollapse = () => setCollapsed((prev) => {
-    const element = document.querySelector(`#collapsible-content-${type}`)
+    const element = document.querySelector(`#collapsible-content-${id}`)
     if (element.style.maxHeight) element.style.maxHeight = null
     else element.style.maxHeight = `${element.scrollHeight}px`
     return !prev
@@ -16,9 +16,9 @@ const CollapsibleIncidents = ({ type, data, id }) => {
 
   return (
     <>
-      <div class={c.ss(`collapsible-header mt-3 ${isCollapsed ? 'active' : ''}`)} onClick={toggleCollapse}>
+      <div class={c.ss(`collapsible-header mt-3 is-unselectable ${isCollapsed ? 'active' : ''}`)} onClick={toggleCollapse}>
         <h5 class={c.ss('title is-5 is-capitalized has-text-centered')}>
-          {type}&nbsp;Incidents
+          {title}
           <span class={c.ss('is-pulled-right')}>
             <span class={c.ss('icon has-text-primary-dark')}>
               {!isCollapsed
@@ -27,15 +27,13 @@ const CollapsibleIncidents = ({ type, data, id }) => {
             </span>
           </span>
         </h5>
-        {type === 'recent' && <h6 class={c.ss('subtitle is-6 has-text-centered mr-5')}>within 48 hours</h6>}
+        {subTitle && <h6 class={c.ss('subtitle is-6 has-text-centered mr-5')}>{subTitle}</h6>}
       </div>
-      <div id={`collapsible-content-${type}`} class={c.ss(`collapsible-content`)}>
-        <div class={c.ss('pt-6 pl-6 pr-6 pb-6')}>
-          Content
-        </div>
+      <div id={`collapsible-content-${id}`} class={c.ss(`collapsible-content`)}>
+        {children}
       </div>
     </>
   )
 }
 
-export default CollapsibleIncidents;
+export default CollapsibleSection;

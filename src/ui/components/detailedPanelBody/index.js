@@ -1,7 +1,7 @@
 import { h } from 'preact';
 import style from './style.scss';
 import ModularCssHelper from '../../lib/ModularCssHelper.js';
-import CollapsibleIncidents from '../collapsibleIncidents';
+import CollapsibleSection from '../CollapsibleSection';
 import statuses from '../../lib/statusConstants.js';
 
 const c = new ModularCssHelper(style)
@@ -25,8 +25,19 @@ const DetailedPanelBody = ({ serviceKey, service, fetchStatus, data }) => {
         </p>
       </div>
       <div class={c.ss('column is-three-quarters')}>
-        <CollapsibleIncidents type='ongoing' data={data && data.ongoingIncidents} />
-        <CollapsibleIncidents type='recent' data={data && data.recentIncidents} />
+        <CollapsibleSection
+          id={`${serviceKey}-ongoing`}
+          title={'Ongoing Incidents'}
+        >
+          <p class='pt-5 pl-5'>fffff</p>
+        </CollapsibleSection>
+        <CollapsibleSection
+          id={`${serviceKey}-recent`}
+          title={'Recent Incidents'}
+          subTitle={'Within 48 hours'}
+        >
+          <p class='pt-5 pl-5'>Content</p>
+        </CollapsibleSection>
       </div>
     </div>
   )
