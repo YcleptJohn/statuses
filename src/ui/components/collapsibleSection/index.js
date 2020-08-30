@@ -19,7 +19,7 @@ const CollapsibleSection = ({ id, title, subTitle, children }) => {
       <div class={c.ss(`collapsible-header mt-3 is-unselectable ${isCollapsed ? 'active' : ''}`)} onClick={toggleCollapse}>
         <h5 class={c.ss('title is-5 is-capitalized has-text-centered')}>
           {title}
-          <span class={c.ss('is-pulled-right')}>
+          <span class={c.ss('collapsible-header-icon')}>
             <span class={c.ss('icon has-text-primary-dark')}>
               {!isCollapsed
               ? <i class='fas fa-plus' />
