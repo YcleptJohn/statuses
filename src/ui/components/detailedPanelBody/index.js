@@ -29,14 +29,32 @@ const DetailedPanelBody = ({ serviceKey, service, fetchStatus, data }) => {
           id={`${serviceKey}-ongoing`}
           title={'Ongoing Incidents'}
         >
-          <p class='pt-5 pl-5'>fffff</p>
+          {data && data.ongoingIncidents && data.ongoingIncidents.length > 0
+          ? 'Some element'
+          : <div class={c.ss('pt-5 pb-5 pl-5 pr-5 has-text-centered')}>
+            <h5 class={c.ss('title is-5 has-text-success has-text-weight-bold')}>No issues</h5>
+            <h6 class={c.ss('subtitle is-6')}>There are no ongoing incidents</h6>
+            <article class={c.ss('message is-info')}>
+              <div class={c.ss('message-body')}>
+                <strong>Please note:</strong> this metric is based entirely on the status reported by the platform itself. 
+                There could still be an issue that hasn't been recognised or publicised yet!
+              </div>
+            </article>
+          </div>
+          }
         </CollapsibleSection>
         <CollapsibleSection
           id={`${serviceKey}-recent`}
           title={'Recent Incidents'}
           subTitle={'Within 48 hours'}
         >
-          <p class='pt-5 pl-5'>Content</p>
+          {data && data.recentIncidents && data.recentIncidents.length > 0
+          ? 'Some element'
+          : <div class={c.ss('pt-5 pb-5 pl-5 pr-5 has-text-centered')}>
+            <h5 class={c.ss('title is-5 has-text-success has-text-weight-bold')}>No issues</h5>
+            <h6 class={c.ss('subtitle is-6')}>There have been no incidents within the last 48 hours</h6>
+          </div>
+          }
         </CollapsibleSection>
       </div>
     </div>
