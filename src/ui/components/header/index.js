@@ -6,7 +6,7 @@ const c = new ModularCssHelper(style)
 
 const Header = () => (
 	<nav class={c.ss('navbar level')} role="navigation" aria-label="main navigation">
-		<p class={c.ss('level-item has-text-centered no-select is-size-4 has-text-weight-bold')}>
+		<p class={c.ss('level-item has-text-centered is-unselectable is-size-4 has-text-weight-bold')}>
 			<span>TECH</span>
 			<span class={c.ss('icon is-medium has-text-danger')}>
 				<i class="fas fa-heartbeat fa" />
