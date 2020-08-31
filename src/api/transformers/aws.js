@@ -1,5 +1,5 @@
 const aws = module.exports = {}
-const moment = require('moment')
+const moment = require('moment-timezone/builds/moment-timezone-with-data-10-year-range')
 const config = require('../../../config').aws
 const ddParser = require('../lib/downDetectorParser.js')
 const shared = require('./shared.js')
@@ -9,11 +9,11 @@ aws._uiMeta = shared.uiMeta
 
 aws._isOngoing = (incident) => {
   const looksResolved = incident.summary.trim().startsWith('[RESOLVED]')
-  const isRelevant = moment().subtract(4, 'days').isBefore(moment.unix(incident.date))
+  const isRelevant = moment.utc().subtract(4, 'days').isBefore(moment.unix(incident.date))
   return isRelevant && !looksResolved
 }
 
-aws._isRecent = (incident) => moment().subtract(2, 'days').isBefore(moment.unix(incident.date))
+aws._isRecent = (incident) => moment.utc().subtract(2, 'days').isBefore(moment.unix(incident.date))
 
 aws._splitIncidents = (incidents) => {
   let ongoing = []
