@@ -9,7 +9,7 @@ aws._uiMeta = shared.uiMeta
 
 aws._isOngoing = (incident) => {
   const looksResolved = incident.summary.trim().startsWith('[RESOLVED]')
-  const isRelevant = moment().subtract(4, 'days').isBefore(moment(parseInt(incident.date, 10)))
+  const isRelevant = moment().subtract(4, 'days').isBefore(moment.unix(incident.date))
   return isRelevant && !looksResolved
 }
 
@@ -41,7 +41,7 @@ aws._extractUpdates = (description) => {
 aws._transformIncident = (incident) => {
   if (!incident) return null
   return {
-    startTime: incident.date,
+    startTime: moment.unix(incident.date).toISOString(),
     creationTime: null,
     resolutionTime: null,
     service: {
