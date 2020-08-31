@@ -1,7 +1,8 @@
 import { h } from 'preact';
 import style from './style.scss';
 import ModularCssHelper from '../../lib/ModularCssHelper.js';
-import CollapsibleSection from '../CollapsibleSection';
+import CollapsibleSection from '../collapsibleSection';
+import DetailedIncident from '../detailedIncident';
 import statuses from '../../lib/statusConstants.js';
 
 const c = new ModularCssHelper(style)

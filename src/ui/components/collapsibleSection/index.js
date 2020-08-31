@@ -5,7 +5,7 @@ import { useState } from 'preact/hooks';
 
 const c = new ModularCssHelper(style)
 
-const CollapsibleSection = ({ id, title, subTitle, children }) => {
+const CollapsibleSection = ({ id, title, subTitle, isCompact, children }) => {
   const [isCollapsed, setCollapsed] = useState(false)
   const toggleCollapse = () => setCollapsed((prev) => {
     const element = document.querySelector(`#collapsible-content-${id}`)
@@ -13,6 +13,28 @@ const CollapsibleSection = ({ id, title, subTitle, children }) => {
     else element.style.maxHeight = `${element.scrollHeight}px`
     return !prev
   })
+
+  if (isCompact) {
+    return (
+      <>
+        <div class={c.ss('compact-collapsible-header is-unselectable')} onClick={toggleCollapse}>
+          <h6 class={c.ss('title is-6')}>
+            <span class={c.ss('compact-collapsible-header-icon')}>
+              <span class={c.ss('icon has-text-primary-dark')}>
+                {!isCollapsed
+                ? <i class='fas chevron-right' />
+                : <i class='fas chevron-down' />}
+              </span>
+            </span>
+            {title}
+          </h6>
+        </div>
+        <div id={`collapsible-content-${id}`} class={c.ss('collapsible-content')}>
+          {children}
+        </div>
+      </>
+    )
+  }
 
   return (
     <>
