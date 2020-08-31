@@ -7,10 +7,16 @@ const c = new ModularCssHelper(style)
 
 const CollapsibleSection = ({ id, title, subTitle, isCompact, children }) => {
   const [isCollapsed, setCollapsed] = useState(false)
+
   const toggleCollapse = () => setCollapsed((prev) => {
     const element = document.querySelector(`#collapsible-content-${id}`)
+    const old = element.style.maxHeight
+    const updated = element.scrollHeight
+    const diff = updated - old
     if (element.style.maxHeight) element.style.maxHeight = null
     else element.style.maxHeight = `${element.scrollHeight}px`
+    const collapsibleParent = element.parentElement.closest('[id^="collapsible-content"]')
+    if (collapsibleParent) collapsibleParent.style.maxHeight = `${parseInt(collapsibleParent.style.maxHeight, 10) + diff}px`
     return !prev
   })
 
