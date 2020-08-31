@@ -32,7 +32,7 @@ const DetailedPanelBody = ({ serviceKey, service, fetchStatus, data }) => {
         >
           {data && data.ongoingIncidents && data.ongoingIncidents.length > 0
           ? <div class={c.ss('pt-2 pb-2 pl-2 pr-2')}>
-            {data.ongoingIncidents.map(x => <DetailedIncident incident={x} type='ongoing' />)}
+            {data.ongoingIncidents.map((x, i) => <DetailedIncident incident={x} type='ongoing' index={i} isLastChild={i === data.ongoingIncidents.length-1} />)}
           </div>
           : <div class={c.ss('pt-5 pb-5 pl-5 pr-5 has-text-centered')}>
             <h5 class={c.ss('title is-5 has-text-success has-text-weight-bold')}>No issues</h5>
@@ -53,7 +53,7 @@ const DetailedPanelBody = ({ serviceKey, service, fetchStatus, data }) => {
         >
           {data && data.recentIncidents && data.recentIncidents.length > 0
           ? <div class={c.ss('pt-2 pb-2 pl-2 pr-2')}>
-            {data.recentIncidents.map((x, i) => <DetailedIncident incident={x} type='recent' collapsible={data.recentIncidents.length > 1} index={i} />)}
+            {data.recentIncidents.map((x, i) => <DetailedIncident incident={x} type='recent' index={i} isLastChild={i === data.recentIncidents.length-1} />)}
           </div>
           : <div class={c.ss('pt-5 pb-5 pl-5 pr-5 has-text-centered')}>
             <h5 class={c.ss('title is-5 has-text-success has-text-weight-bold')}>No issues</h5>

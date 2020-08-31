@@ -24,12 +24,12 @@ const CollapsibleSection = ({ id, title, subTitle, isCompact, children }) => {
     return (
       <>
         <div class={c.ss('compact-collapsible-header is-unselectable')} onClick={toggleCollapse}>
-          <h6 class={c.ss('title is-6')}>
+          <h6 class={c.ss('title is-6 has-text-primary')}>
             <span class={c.ss('compact-collapsible-header-icon')}>
-              <span class={c.ss('icon has-text-primary-dark')}>
+              <span class={c.ss('icon')}>
                 {!isCollapsed
-                ? <i class='fas chevron-right' />
-                : <i class='fas chevron-down' />}
+                ? <i class='fas fa-chevron-right' />
+                : <i class='fas fa-chevron-down' />}
               </span>
             </span>
             {title}
