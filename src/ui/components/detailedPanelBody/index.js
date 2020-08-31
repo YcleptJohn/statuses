@@ -31,7 +31,9 @@ const DetailedPanelBody = ({ serviceKey, service, fetchStatus, data }) => {
           title={'Ongoing Incidents'}
         >
           {data && data.ongoingIncidents && data.ongoingIncidents.length > 0
-          ? 'Some element'
+          ? <div class={c.ss('pt-2 pb-2 pl-2 pr-2')}>
+            {data.ongoingIncidents.map(x => <DetailedIncident incident={x} type='ongoing' />)}
+          </div>
           : <div class={c.ss('pt-5 pb-5 pl-5 pr-5 has-text-centered')}>
             <h5 class={c.ss('title is-5 has-text-success has-text-weight-bold')}>No issues</h5>
             <h6 class={c.ss('subtitle is-6')}>There are no ongoing incidents</h6>
@@ -50,7 +52,9 @@ const DetailedPanelBody = ({ serviceKey, service, fetchStatus, data }) => {
           subTitle={'Within 48 hours'}
         >
           {data && data.recentIncidents && data.recentIncidents.length > 0
-          ? 'Some element'
+          ? <div class={c.ss('pt-2 pb-2 pl-2 pr-2')}>
+            {data.recentIncidents.map((x, i) => <DetailedIncident incident={x} type='recent' collapsible={data.recentIncidents.length > 1} index={i} />)}
+          </div>
           : <div class={c.ss('pt-5 pb-5 pl-5 pr-5 has-text-centered')}>
             <h5 class={c.ss('title is-5 has-text-success has-text-weight-bold')}>No issues</h5>
             <h6 class={c.ss('subtitle is-6')}>There have been no incidents within the last 48 hours</h6>
