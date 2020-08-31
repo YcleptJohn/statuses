@@ -1,24 +1,34 @@
+import moment from 'moment'
+
+const _createTimeDisplay = (timeString) => {
+  const time = moment(timeString)
+  return {
+    value: time.format('Do MMM hh:mmA'),
+    subValue: time.fromNow()
+  }
+}
+
 export default [
   {
     key: 'startTime',
     uiText: 'Issue start',
     uiIcon: 'fa-hourglass-start',
     exists: (incident) => !!incident.startTime,
-    extract: (incident) => incident.startTime
+    extract: (incident) => _createTimeDisplay(incident.startTime)
   },
   {
     key: 'creationTime',
     uiText: 'Incident start',
     uiIcon: 'fa-hourglass-half',
     exists: (incident) => !!incident.creationTime,
-    extract: (incident) => incident.creationTime
+    extract: (incident) => _createTimeDisplay(incident.creationTime)
   },
   {
     key: 'resolutionTime',
     uiText: 'Resolved',
     uiIcon: 'fa-hourglass-end',
     exists: (incident) => !!incident.resolutionTime,
-    extract: (incident) => incident.resolutionTime
+    extract: (incident) => _createTimeDisplay(incident.resolutionTime)
   },
   {
     key: 'service',
