@@ -1,7 +1,7 @@
 import { h } from 'preact';
 import style from './style.scss';
 import ModularCssHelper from '../../lib/ModularCssHelper.js';
-import IncidentMetaFields from '../../lib/IncidentMeteFields.js';
+import IncidentMetaFields from '../../lib/IncidentMetaFields.js';
 
 const c = new ModularCssHelper(style)
 
