@@ -16,7 +16,12 @@ azure._isOngoing = (incident) => {
 
 azure._isRecent = (incident) => moment.utc().subtract(2, 'days').isBefore(moment(incident.isoDate)) && azure._isResolved(incident)
 
-azure._splitIncidents = (incidents) => shared._splitIncidents(incidents, azure._isOngoing, azure._isRecent)
+azure._splitIncidents = (incidents) => shared._splitIncidents(
+  incidents,
+  azure._isOngoing,
+  azure._isRecent,
+  (a, b) => new Date(b.isoDate) - new Date(a.isoDate)
+)
 
 azure._extractUpdates = (incident) => {
   const dom = parse(incident['content:encoded'])
@@ -35,7 +40,7 @@ azure._extractUpdates = (incident) => {
     const header = (update.shift()).rawText
     const time = header.split(',')[1].trim()
     const text = update.map(u => u.rawText).join('\n')
-    return { time: moment(time, 'M/D/YYYY h:mm:ss A').toISOString(), text }
+    return { time: moment.utc(time, 'M/D/YYYY h:mm:ss A').toISOString(), text }
   }).reverse()
   return objecUpdates
 }
