@@ -15,6 +15,8 @@ aws._isOngoing = (incident) => {
 
 aws._isRecent = (incident) => moment.utc().subtract(2, 'days').isBefore(moment.unix(incident.date))
 
+aws._sortFunc = (a, b) => new Date(b.date * 1000) - new Date(a.date * 1000)
+
 aws._splitIncidents = (incidents) => {
   let ongoing = []
   let recent = []
@@ -28,6 +30,8 @@ aws._splitIncidents = (incidents) => {
       else ongoing.push(incident)
     })
   }
+  recent.sort(aws._sortFunc)
+  ongoing.sort(aws._sortFunc)
   return [ongoing, recent]
 }
 
