@@ -36,13 +36,13 @@ azure._extractUpdates = (incident) => {
     }
     tempParagraphs.push(node)
   })
-  const objecUpdates = updates.map(update => {
+  const objectUpdates = updates.map(update => {
     const header = (update.shift()).rawText
     const time = header.split(',')[1].trim()
     const text = update.map(u => u.rawText).join('\n')
     return { time: moment.utc(time, 'M/D/YYYY h:mm:ss A').toISOString(), text }
   }).reverse()
-  return objecUpdates
+  return objectUpdates
 }
 
 azure._transformIncident = (incident) => {
