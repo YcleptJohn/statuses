@@ -1,19 +1,21 @@
 const aws = module.exports = {}
-const moment = require('moment')
+const moment = require('moment-timezone/builds/moment-timezone-with-data-10-year-range')
 const config = require('../../../config').aws
 const ddParser = require('../lib/downDetectorParser.js')
 const shared = require('./shared.js')
 const { parse } = require('node-html-parser')
 
-aws._uiMeta = shared._uiMeta
+aws._uiMeta = shared.uiMeta
 
 aws._isOngoing = (incident) => {
   const looksResolved = incident.summary.trim().startsWith('[RESOLVED]')
-  const isRelevant = moment().subtract(4, 'days').isBefore(moment(parseInt(incident.date, 10)))
+  const isRelevant = moment.utc().subtract(4, 'days').isBefore(moment.unix(incident.date))
   return isRelevant && !looksResolved
 }
 
-aws._isRecent = (incident) => moment().subtract(2, 'days').isBefore(moment.unix(incident.date))
+aws._isRecent = (incident) => moment.utc().subtract(2, 'days').isBefore(moment.unix(incident.date))
+
+aws._sortFunc = (a, b) => new Date(b.date * 1000) - new Date(a.date * 1000)
 
 aws._splitIncidents = (incidents) => {
   let ongoing = []
@@ -28,6 +30,8 @@ aws._splitIncidents = (incidents) => {
       else ongoing.push(incident)
     })
   }
+  recent.sort(aws._sortFunc)
+  ongoing.sort(aws._sortFunc)
   return [ongoing, recent]
 }
 
@@ -35,14 +39,14 @@ aws._extractUpdates = (description) => {
   const dom = parse(description)
   const times = dom.childNodes.map(x => x.firstChild.text.trim())
   const messages = dom.childNodes.map((x, i) => x.text.replace(times[i], '').trim())
-  return new Array(messages.length).fill(null).map((x, i) => ({ time: times[i], text: messages[i] }))
+  return new Array(messages.length).fill(null).map((x, i) => ({ time: times[i], text: messages[i] })).reverse()
 }
 
 aws._transformIncident = (incident) => {
   if (!incident) return null
   return {
-    startTime: incident.date,
-    creationTime: null,
+    startTime: null,
+    creationTime: moment.unix(incident.date).toISOString(),
     resolutionTime: null,
     service: {
       key: incident.service,

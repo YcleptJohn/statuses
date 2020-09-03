@@ -1,13 +1,14 @@
 const shared = module.exports = {}
 
-shared._uiMeta = (config) => {
+shared.uiMeta = (config) => {
   const relevantKeys = [
     'providerKey',
     'providerName',
     'providerLogo',
     'labels',
     'statusPageUrl',
-    'historicalStatusPageUrl'
+    'historicalStatusPageUrl',
+    'downDetectorIdentifier'
   ]
   return {
     ...Object.fromEntries(Object.entries(config).filter(c => relevantKeys.includes(c[0])))
@@ -18,7 +19,7 @@ shared._uiMeta = (config) => {
   Now only used by gcloud as AWS ended up being finnicky. Will keep for now but consider
   moving back to unique functions if future transformers can't make use of it also.
 */
-shared._splitIncidents = (incidents, ongoingClassifierFunc, recentClassifierFunc) => {
+shared._splitIncidents = (incidents, ongoingClassifierFunc, recentClassifierFunc, sortFunc) => {
   if (!incidents || !Array.isArray(incidents)) return [null, null]
   let ongoing = []
   let recent = []
@@ -31,6 +32,10 @@ shared._splitIncidents = (incidents, ongoingClassifierFunc, recentClassifierFunc
       recent.push(incidents[i])
       continue
     }
+  }
+  if (sortFunc) {
+    recent.sort(sortFunc)
+    ongoing.sort(sortFunc)
   }
   return [ongoing, recent]
 }

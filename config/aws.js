@@ -1,7 +1,7 @@
 module.exports = {
   providerKey: 'aws',
   providerName: 'Amazon Web Services',
-  providerLogo: '//',
+  providerLogo: 'logos/aws.png',
   labels: [],
   hasRegions: true,
   statusPageUrl: 'https://status.aws.amazon.com/',

@@ -1,0 +1,17 @@
+@import "../../sass/brand.scss";
+@import "../../../../node_modules/bulma/sass/components/card.sass";
+@import "../../../../node_modules/bulma/sass/elements/icon.sass";
+@import "../../../../node_modules/bulma/sass/grid//columns.sass";
+@import "../../../../node_modules/bulma/sass/elements/image.sass";
+@import "../../../../node_modules/bulma/sass/elements/progress.sass";
+
+
+.scaled-logo {
+  width: 50%;
+  height: 50%;
+
+  @media only screen and (max-width: 768px) {
+    width: 25%;
+    height: 25%;
+  }
+}

@@ -1,7 +1,7 @@
 module.exports = {
   providerKey: 'gcloud',
   providerName: 'Google Cloud',
-  providerLogo: '//',
+  providerLogo: 'logos/gcloud.png',
   labels: [],
   hasRegions: false,
   statusPageUrl: 'https://status.cloud.google.com/',

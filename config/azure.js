@@ -1,7 +1,7 @@
 module.exports = {
   providerKey: 'azure',
   providerName: 'Azure',
-  providerLogo: '//',
+  providerLogo: 'logos/azure.png',
   labels: [],
   hasRegions: true,
   statusPageUrl: 'https://status.dev.azure.com/',
