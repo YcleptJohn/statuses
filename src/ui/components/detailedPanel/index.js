@@ -32,7 +32,7 @@ const DetailedPanel = (props) => {
           <DetailedPanelBody {...props} />
         </div>
         <footer class={c.ss('card-footer')}>
-          FOOTER
+          <a href='#' class={c.ss('card-footer-item is-hidden-desktop')}>Back to top</a>
         </footer>
       </div>
   )
