@@ -1,7 +1,8 @@
 import { h } from 'preact';
 import style from './style.scss';
 import ModularCssHelper from '../../lib/ModularCssHelper.js';
-import IncidentMetaFields from '../../lib/IncidentMetaFields.js';
+import Time from '../time.js';
+import { metaFields } from '../../lib/IncidentMetaFields.js';
 
 const c = new ModularCssHelper(style)
 
@@ -11,7 +12,7 @@ const DetailedIncident = ({ incident, type, index, isLastChild }) => {
     <>
       <h6 class={c.ss('title is-6 has-text-primary')}>{incident.shortSummary}</h6>
       <div class={c.ss('')}>
-        {IncidentMetaFields.map(field => {
+        {metaFields.map(field => {
           if (!field.exists(incident)) return null
           const value = field.extract(incident)
           return (
@@ -42,7 +43,9 @@ const DetailedIncident = ({ incident, type, index, isLastChild }) => {
         {latestUpdate && <>
           <p class={c.ss('has-text-centered is-italic has-text-grey has-text-weight-bold mt-3')}>Latest Update</p>
           <div class={c.ss('update')}>
-            <div class={c.ss('has-text-centered has-text-weight-bold')}>{latestUpdate.time}</div>
+            <div class={c.ss('has-text-centered')}>
+              <Time timeString={latestUpdate.time} preferMultiline={false} />
+            </div>
             <div>{latestUpdate.text}</div>
           </div>
         </>}
