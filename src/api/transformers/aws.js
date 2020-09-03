@@ -45,8 +45,8 @@ aws._extractUpdates = (description) => {
 aws._transformIncident = (incident) => {
   if (!incident) return null
   return {
-    startTime: moment.unix(incident.date).toISOString(),
-    creationTime: null,
+    startTime: null,
+    creationTime: moment.unix(incident.date).toISOString(),
     resolutionTime: null,
     service: {
       key: incident.service,
