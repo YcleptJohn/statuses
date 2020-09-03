@@ -35,7 +35,7 @@ aws._extractUpdates = (description) => {
   const dom = parse(description)
   const times = dom.childNodes.map(x => x.firstChild.text.trim())
   const messages = dom.childNodes.map((x, i) => x.text.replace(times[i], '').trim())
-  return new Array(messages.length).fill(null).map((x, i) => ({ time: times[i], text: messages[i] }))
+  return new Array(messages.length).fill(null).map((x, i) => ({ time: times[i], text: messages[i] })).reverse()
 }
 
 aws._transformIncident = (incident) => {

@@ -36,7 +36,7 @@ azure._extractUpdates = (incident) => {
     const time = header.split(',')[1].trim()
     const text = update.map(u => u.rawText).join('\n')
     return { time: moment(time, 'M/D/YYYY h:mm:ss A').toISOString(), text }
-  })
+  }).reverse()
   return objecUpdates
 }
 
