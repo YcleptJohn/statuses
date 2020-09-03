@@ -43,7 +43,7 @@ const DetailedIncident = ({ incident, type, index, isLastChild }) => {
         {latestUpdate && <>
           <p class={c.ss('has-text-centered is-italic has-text-grey has-text-weight-bold mt-3')}>Latest Update</p>
           <div class={c.ss('update')}>
-            <div class={c.ss('has-text-centered')}>
+            <div class={c.ss('has-text-centered mb-2')}>
               <Time timeString={latestUpdate.time} preferMultiline={false} />
             </div>
             <div>{latestUpdate.text}</div>
