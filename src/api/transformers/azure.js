@@ -27,14 +27,18 @@ azure._extractUpdates = (incident) => {
   const dom = parse(incident['content:encoded'])
   const updates = []
   let tempParagraphs = []
-  dom.childNodes.forEach(node => {
-    if (!node.tagName) return
+
+  dom.childNodes.forEach((node, index) => {
     if (node.tagName === 'hr') {
       updates.push(tempParagraphs)
       tempParagraphs = []
       return
     }
-    tempParagraphs.push(node)
+    if (node.tagName) tempParagraphs.push(node)
+
+    // If this is the last iteration, save everything we have as we're not going to
+    // encounter a 'hr' tag to collect the buffer like usual iterations
+    if (index === dom.childNodes.length-1) updates.push(tempParagraphs)
   })
   const objectUpdates = updates.map(update => {
     const header = (update.shift()).rawText
