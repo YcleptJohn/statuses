@@ -32,7 +32,7 @@ export default [
   },
   {
     key: 'service',
-    uiText: 'Service',
+    uiText: 'Service(s)',
     uiIcon: 'fa-server',
     exists: (incident) => incident.service && (incident.service.key || incident.service.name),
     extract: (incident) => {
@@ -44,7 +44,7 @@ export default [
   },
   {
     key: 'affectedRegions',
-    uiText: 'Regions',
+    uiText: 'Region(s)',
     uiIcon: 'fa-globe-americas',
     exists: (incident) => incident.affectedRegions && Array.isArray(incident.affectedRegions) && incident.affectedRegions.length > 0,
     extract: (incident) => incident.affectedRegions.join(', ')
