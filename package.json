@@ -27,7 +27,10 @@
   },
   "homepage": "https://github.com/YcleptJohn/statuses#readme",
   "dependencies": {
+    "@aduh95/preact-fontawesome": "0.1.5",
     "@fortawesome/fontawesome-free": "^5.14.0",
+    "@fortawesome/fontawesome-svg-core": "^1.2.30",
+    "@fortawesome/free-solid-svg-icons": "^5.14.0",
     "bulma": "^0.9.0",
     "cors": "^2.8.5",
     "express": "^4.17.1",
@@ -61,7 +64,7 @@
       "<rootDir>/tests/__mocks__/setupTests.js"
     ]
   },
-  "engines" :{
+  "engines": {
     "node": ">=12.0.0"
   }
 }
