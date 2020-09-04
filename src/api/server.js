@@ -44,6 +44,6 @@ router.get('*', (req, res) => {
   return res.sendFile(path.resolve(__dirname, '..', '..', 'build', 'index.html'))
 })
 
-router.listen(9999, () => {
-  console.log('Listening on port 9999')
+router.listen(process.env.PORT || 9999, () => {
+  console.log(`Listening on port ${process.env.PORT || 9999}`)
 })
