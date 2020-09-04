@@ -3,6 +3,7 @@ import style from './style.scss';
 import Services from '../../lib/Services.js'
 import Card from '../../components/card'
 import ModularCssHelper from '../../lib/ModularCssHelper.js';
+import { setPageTitle } from '../../lib/DynamicPageMeta.js';
 import statuses from '../../lib/statusConstants.js'
 
 const c = new ModularCssHelper(style)
@@ -20,6 +21,7 @@ class Home extends Component {
 	}
 
 	async componentDidMount() {
+		setPageTitle('Tech Status')
 		const { services } = this.state
 		services.names.forEach(name => {
 			this.changeStatus(name, statuses.IN_PROGRESS)
