@@ -23,7 +23,6 @@ export default class Service extends Component {
   }
 
   async componentDidMount() {
-    console.log('API_URL', apiUrl)
     const { service } = this.state
     if (!service.config || !service.meta) return route('/')
     this.changeStatus(statuses.IN_PROGRESS)

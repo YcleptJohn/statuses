@@ -50,7 +50,6 @@ class Home extends Component {
 			mutated.data[name] = data
 			return mutated
 		})
-		console.log(this.state)
 	}
 
 	render() {
