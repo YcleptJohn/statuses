@@ -45,7 +45,7 @@ export default class Service extends Component {
 
   render() {
     return (
-      <div class={c.ss('container')}>
+      <div class={c.ss('container mt-3')}>
         <DetailedPanel {...this.state} />
       </div>
     )
