@@ -24,7 +24,7 @@ class Home extends Component {
 			this.changeStatus(name, statuses.IN_PROGRESS)
 			// Need to make this cancellable in some way to stop this.setStates() if a delayed fetch
       // arrives after an unmount
-			fetch(`http://localhost:9999/api/fetch/${name}`)
+			fetch(`https://statuses-dot-tech.herokuapp.com/api/fetch/${name}`)
 				.then(res => res.json())
 				.catch(() => this.changeStatus(name, statuses.COMPLETED_ERRONEOUSLY))
 				.then(data => {

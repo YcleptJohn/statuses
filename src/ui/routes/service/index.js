@@ -27,7 +27,7 @@ export default class Service extends Component {
     this.changeStatus(statuses.IN_PROGRESS)
     // Need to make this cancellable in some way to stop this.setStates() if a delayed fetch
     // arrives after an unmount
-    fetch(`http://localhost:9999/api/fetch/${this.state.serviceKey}`)
+    fetch(`https://statuses-dot-tech.herokuapp.com/api/fetch/${this.state.serviceKey}`)
       .then(res => res.json())
       .catch(() => this.changeStatus(statuses.COMPLETED_ERRONEOUSLY))
       .then(data => {
