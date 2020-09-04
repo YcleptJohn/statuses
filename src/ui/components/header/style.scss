@@ -1,8 +1,22 @@
 @import "../../sass/brand.scss";
-@import "bulma/sass/components/level.sass";
-@import "bulma/sass/components/navbar.sass";
-@import "bulma/sass/elements/icon.sass";
+@import "../../../../node_modules/bulma/sass/components/level.sass";
+@import "../../../../node_modules/bulma/sass/components/navbar.sass";
+@import "../../../../node_modules/bulma/sass/elements/icon.sass";
+@import "../../../../node_modules/bulma/sass/elements/container.sass";
 
 nav {
 	font-family: 'Red Rose', 'Nunito', sans-serif;
+}
+
+.centered-row {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+}
+
+.consistent-colour:hover,
+.consistent-colour:active,
+.consistent-colour:focus,
+.consistent-colour:focus-within {
+	color: $grey-dark !important;
 }
