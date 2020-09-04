@@ -6,6 +6,7 @@ import ModularCssHelper from '../../lib/ModularCssHelper.js';
 import statuses from '../../lib/statusConstants.js'
 
 const c = new ModularCssHelper(style)
+const apiUrl = process.env.NODE_ENV === 'production' ? 'https://statuses-dot-tech.herokuapp.com' : 'http://localhost:9999'
 
 class Home extends Component {
 	constructor() {
@@ -24,7 +25,7 @@ class Home extends Component {
 			this.changeStatus(name, statuses.IN_PROGRESS)
 			// Need to make this cancellable in some way to stop this.setStates() if a delayed fetch
       // arrives after an unmount
-			fetch(`https://statuses-dot-tech.herokuapp.com/api/fetch/${name}`)
+			fetch(`${apiUrl}/api/fetch/${name}`)
 				.then(res => res.json())
 				.catch(() => this.changeStatus(name, statuses.COMPLETED_ERRONEOUSLY))
 				.then(data => {

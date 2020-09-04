@@ -7,6 +7,7 @@ import DetailedPanel from '../../components/detailedPanel';
 import { route } from 'preact-router';
 
 const c = new ModularCssHelper(style)
+const apiUrl = process.env.NODE_ENV === 'production' ? 'https://statuses-dot-tech.herokuapp.com' : 'http://localhost:9999'
 
 export default class Service extends Component {
   constructor(props) {
@@ -22,12 +23,13 @@ export default class Service extends Component {
   }
 
   async componentDidMount() {
+    console.log('API_URL', apiUrl)
     const { service } = this.state
     if (!service.config || !service.meta) return route('/')
     this.changeStatus(statuses.IN_PROGRESS)
     // Need to make this cancellable in some way to stop this.setStates() if a delayed fetch
     // arrives after an unmount
-    fetch(`https://statuses-dot-tech.herokuapp.com/api/fetch/${this.state.serviceKey}`)
+    fetch(`${apiUrl}/api/fetch/${this.state.serviceKey}`)
       .then(res => res.json())
       .catch(() => this.changeStatus(statuses.COMPLETED_ERRONEOUSLY))
       .then(data => {
