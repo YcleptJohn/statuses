@@ -4,6 +4,7 @@ import ModularCssHelper from '../../lib/ModularCssHelper.js';
 import Services from '../../lib/Services.js'
 import statuses from '../../lib/statusConstants.js'
 import DetailedPanel from '../../components/detailedPanel';
+import { setPageTitle } from '../../lib/DynamicPageMeta.js';
 import { route } from 'preact-router';
 
 const c = new ModularCssHelper(style)
@@ -23,12 +24,13 @@ export default class Service extends Component {
   }
 
   async componentDidMount() {
-    const { service } = this.state
+    const { service, serviceKey } = this.state
     if (!service.config || !service.meta) return route('/')
+    setPageTitle(`Tech Status | ${service.meta.providerName}`)
     this.changeStatus(statuses.IN_PROGRESS)
     // Need to make this cancellable in some way to stop this.setStates() if a delayed fetch
     // arrives after an unmount
-    fetch(`${apiUrl}/api/fetch/${this.state.serviceKey}`)
+    fetch(`${apiUrl}/api/fetch/${serviceKey}`)
       .then(res => res.json())
       .catch(() => this.changeStatus(statuses.COMPLETED_ERRONEOUSLY))
       .then(data => {
