@@ -21,6 +21,7 @@ export default class Service extends Component {
       fetchStatus: statuses.PENDING,
       data: null
     }
+    this.fetchAborter = new AbortController()
   }
 
   async componentDidMount() {
@@ -28,9 +29,7 @@ export default class Service extends Component {
     if (!service.config || !service.meta) return route('/')
     setPageTitle(`statuses.tech: ${service.meta.providerName} | Simplifying status monitoring across DevOps platforms and tools`)
     this.changeStatus(statuses.IN_PROGRESS)
-    // Need to make this cancellable in some way to stop this.setStates() if a delayed fetch
-    // arrives after an unmount
-    fetch(`${apiUrl}/api/fetch/${serviceKey}`)
+    fetch(`${apiUrl}/api/fetch/${serviceKey}`, { signal: this.fetchAborter.signal })
       .then(res => res.json())
       .catch(() => this.changeStatus(statuses.COMPLETED_ERRONEOUSLY))
       .then(data => {
@@ -38,6 +37,10 @@ export default class Service extends Component {
         this.changeStatus(statuses.COMPLETED_SUCCESSFULLY)
       })
       .catch(() => this.changeStatus(statuses.COMPLETED_ERRONEOUSLY))
+  }
+
+  componentWillUnmount() {
+    this.fetchAborter.abort()
   }
 
   changeStatus(fetchStatus) { this.setState({ fetchStatus }) }
