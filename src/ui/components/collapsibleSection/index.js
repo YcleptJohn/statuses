@@ -2,6 +2,8 @@ import { h } from 'preact';
 import style from './style.scss';
 import ModularCssHelper from '../../lib/ModularCssHelper.js';
 import { useState } from 'preact/hooks';
+import { FontAwesomeIcon } from '@aduh95/preact-fontawesome'
+import { faChevronRight, faChevronDown, faPlus, faMinus } from '@fortawesome/free-solid-svg-icons'
 
 const c = new ModularCssHelper(style)
 
@@ -28,8 +30,8 @@ const CollapsibleSection = ({ id, title, subTitle, isCompact, children }) => {
             <span class={c.ss('compact-collapsible-header-icon')}>
               <span class={c.ss('icon')}>
                 {!isCollapsed
-                ? <i class='fas fa-chevron-right' />
-                : <i class='fas fa-chevron-down' />}
+                ? <FontAwesomeIcon icon={faChevronRight} />
+                : <FontAwesomeIcon icon={faChevronDown} />}
               </span>
             </span>
             {title}
@@ -50,8 +52,8 @@ const CollapsibleSection = ({ id, title, subTitle, isCompact, children }) => {
           <span class={c.ss('collapsible-header-icon')}>
             <span class={c.ss('icon has-text-primary-dark')}>
               {!isCollapsed
-              ? <i class='fas fa-plus' />
-              : <i class='fas fa-minus' />}
+              ? <FontAwesomeIcon icon={faPlus} />
+              : <FontAwesomeIcon icon={faMinus} />}
             </span>
           </span>
         </h5>

@@ -1,4 +1,12 @@
 import moment from 'moment'
+import {
+  faHourglassStart,
+  faHourglassHalf,
+  faHourglassEnd,
+  faServer,
+  faGlobeAmericas
+ } from '@fortawesome/free-solid-svg-icons'
+
 
 export const createTimeDisplay = (timeString) => {
   // Reject non-iso dates to fallback values
@@ -15,28 +23,28 @@ export const metaFields = [
   {
     key: 'startTime',
     uiText: 'Issue start',
-    uiIcon: 'fa-hourglass-start',
+    uiIcon: faHourglassStart,
     exists: (incident) => !!incident.startTime,
     extract: (incident) => createTimeDisplay(incident.startTime)
   },
   {
     key: 'creationTime',
     uiText: 'Incident start',
-    uiIcon: 'fa-hourglass-half',
+    uiIcon: faHourglassHalf,
     exists: (incident) => !!incident.creationTime,
     extract: (incident) => createTimeDisplay(incident.creationTime)
   },
   {
     key: 'resolutionTime',
     uiText: 'Resolved',
-    uiIcon: 'fa-hourglass-end',
+    uiIcon: faHourglassEnd,
     exists: (incident) => !!incident.resolutionTime,
     extract: (incident) => createTimeDisplay(incident.resolutionTime)
   },
   {
     key: 'service',
     uiText: 'Service(s)',
-    uiIcon: 'fa-server',
+    uiIcon: faServer,
     exists: (incident) => incident.service && (incident.service.key || incident.service.name),
     extract: (incident) => {
       const service = incident.service
@@ -48,7 +56,7 @@ export const metaFields = [
   {
     key: 'affectedRegions',
     uiText: 'Region(s)',
-    uiIcon: 'fa-globe-americas',
+    uiIcon: faGlobeAmericas,
     exists: (incident) => incident.affectedRegions && Array.isArray(incident.affectedRegions) && incident.affectedRegions.length > 0,
     extract: (incident) => incident.affectedRegions.join(', ')
   }
