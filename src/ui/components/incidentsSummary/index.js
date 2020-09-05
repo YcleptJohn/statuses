@@ -20,7 +20,6 @@ const incidentsSummary = ({ data, type }) => {
   const faColour = type === 'ongoing' ? 'has-text-danger' : 'has-text-warning'
   return (
     <p class='has-text-centered has-text-weight-bold'>
-      <i class={`fas ${faIcon} ${faColour} mr-1`} />
       <FontAwesomeIcon icon={faIcon} className={c.ss(`${faColour} mr-1`)} />
       {data.length} {type} {issuePlural}
     </p>
