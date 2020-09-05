@@ -1,0 +1,13 @@
+@import "../../sass/brand.scss";
+@import "../../../../node_modules/bulma/sass/layout/footer.sass";
+@import "../../../../node_modules/bulma/sass/components/level.sass";
+
+.compact-footer {
+  margin-top: 20px;
+  height: 60px;
+  padding: 0;
+}
+
+.compact-footer.open {
+
+}
