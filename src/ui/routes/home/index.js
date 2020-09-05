@@ -7,7 +7,7 @@ import { setPageTitle } from '../../lib/DynamicPageMeta.js';
 import statuses from '../../lib/statusConstants.js'
 
 const c = new ModularCssHelper(style)
-const apiUrl = process.env.NODE_ENV === 'production' ? 'https://statuses-dot-tech.herokuapp.com' : 'http://localhost:9999'
+const apiUrl = process.env.NODE_ENV === 'production' ? 'https://statuses.tech' : 'http://localhost:9999'
 
 class Home extends Component {
 	constructor() {
@@ -21,7 +21,7 @@ class Home extends Component {
 	}
 
 	async componentDidMount() {
-		setPageTitle('Tech Status')
+		setPageTitle('statuses.tech: Simplifying status monitoring across DevOps platforms and tools')
 		const { services } = this.state
 		services.names.forEach(name => {
 			this.changeStatus(name, statuses.IN_PROGRESS)

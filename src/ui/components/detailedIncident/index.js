@@ -3,6 +3,8 @@ import style from './style.scss';
 import ModularCssHelper from '../../lib/ModularCssHelper.js';
 import Time from '../time.js';
 import { metaFields } from '../../lib/IncidentMetaFields.js';
+import { FontAwesomeIcon } from '@aduh95/preact-fontawesome'
+import { faLink } from '@fortawesome/free-solid-svg-icons'
 
 const c = new ModularCssHelper(style)
 
@@ -16,9 +18,9 @@ const DetailedIncident = ({ incident, type, index, isLastChild }) => {
           if (!field.exists(incident)) return null
           const value = field.extract(incident)
           return (
-            <p>
+            <p class={c.ss('is-flex')}>
               {field.uiIcon && <span class={c.ss('icon has-text-primary-dark')}>
-                <i class={`fas ${field.uiIcon}`} />
+                <FontAwesomeIcon icon={field.uiIcon} />
               </span>}
               <span class={c.ss('has-text-weight-bold')}>{field.uiText}</span>
               &nbsp;-&nbsp;
@@ -36,7 +38,7 @@ const DetailedIncident = ({ incident, type, index, isLastChild }) => {
         })}
         {incident.directUri && <a href={incident.directUri} target='_blank' rel='noreferrer'>
           <span class={c.ss('icon has-text-primary-dark')}>
-            <i class={`fas fa-link`} />
+            <FontAwesomeIcon icon={faLink} />
           </span>
           <span class={c.ss('has-text-weight-bold has-text-grey-dark')}>Incident Page</span>
         </a>}

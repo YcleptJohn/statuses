@@ -8,7 +8,7 @@ import { setPageTitle } from '../../lib/DynamicPageMeta.js';
 import { route } from 'preact-router';
 
 const c = new ModularCssHelper(style)
-const apiUrl = process.env.NODE_ENV === 'production' ? 'https://statuses-dot-tech.herokuapp.com' : 'http://localhost:9999'
+const apiUrl = process.env.NODE_ENV === 'production' ? 'https://statuses.tech' : 'http://localhost:9999'
 
 export default class Service extends Component {
   constructor(props) {
@@ -26,7 +26,7 @@ export default class Service extends Component {
   async componentDidMount() {
     const { service, serviceKey } = this.state
     if (!service.config || !service.meta) return route('/')
-    setPageTitle(`Tech Status | ${service.meta.providerName}`)
+    setPageTitle(`statuses.tech: ${service.meta.providerName} | Simplifying status monitoring across DevOps platforms and tools`)
     this.changeStatus(statuses.IN_PROGRESS)
     // Need to make this cancellable in some way to stop this.setStates() if a delayed fetch
     // arrives after an unmount
@@ -45,7 +45,7 @@ export default class Service extends Component {
 
   render() {
     return (
-      <div class={c.ss('container')}>
+      <div class={c.ss('container mt-3')}>
         <DetailedPanel {...this.state} />
       </div>
     )
