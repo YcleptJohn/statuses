@@ -18,7 +18,7 @@ const DetailedIncident = ({ incident, type, index, isLastChild }) => {
           if (!field.exists(incident)) return null
           const value = field.extract(incident)
           return (
-            <p>
+            <p class={c.ss('is-flex')}>
               {field.uiIcon && <span class={c.ss('icon has-text-primary-dark')}>
                 <FontAwesomeIcon icon={field.uiIcon} />
               </span>}
