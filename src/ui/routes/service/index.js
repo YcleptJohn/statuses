@@ -31,19 +31,22 @@ export default class Service extends Component {
     this.changeStatus(statuses.IN_PROGRESS)
     fetch(`${apiUrl}/api/fetch/${serviceKey}`, { signal: this.fetchAborter.signal })
       .then(res => res.json())
-      .catch(() => this.changeStatus(statuses.COMPLETED_ERRONEOUSLY))
       .then(data => {
         this.setData(data)
         this.changeStatus(statuses.COMPLETED_SUCCESSFULLY)
       })
-      .catch(() => this.changeStatus(statuses.COMPLETED_ERRONEOUSLY))
+      .catch(err => {
+        if (err.name !== 'AbortError') this.changeStatus(statuses.COMPLETED_ERRONEOUSLY)
+      })
   }
 
   componentWillUnmount() {
     this.fetchAborter.abort()
   }
 
-  changeStatus(fetchStatus) { this.setState({ fetchStatus }) }
+  changeStatus(fetchStatus) {
+    this.setState({ fetchStatus })
+  }
   setData(data) { this.setState({ data }) }
 
   render() {

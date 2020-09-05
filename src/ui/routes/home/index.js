@@ -28,12 +28,13 @@ class Home extends Component {
 			this.changeStatus(name, statuses.IN_PROGRESS)
 			fetch(`${apiUrl}/api/fetch/${name}`, { signal: this.fetchAborter && this.fetchAborter.signal })
 				.then(res => res.json())
-				.catch(() => this.changeStatus(name, statuses.COMPLETED_ERRONEOUSLY))
 				.then(data => {
 					this.setData(name, data)
 					this.changeStatus(name, statuses.COMPLETED_SUCCESSFULLY)
 				})
-				.catch(() => this.changeStatus(name, statuses.COMPLETED_ERRONEOUSLY))
+				.catch(err => {
+					if (err.name !== 'AbortError') this.changeStatus(name, statuses.COMPLETED_ERRONEOUSLY)
+				})
 		})
 	}
 
