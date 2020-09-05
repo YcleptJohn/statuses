@@ -1,0 +1,12 @@
+@import "../../sass/brand.scss";
+@import "../../../../node_modules/bulma/sass/elements/icon.sass";
+
+.logo-font {
+	font-family: 'Red Rose', sans-serif;
+}
+
+.logo-wrapper {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
