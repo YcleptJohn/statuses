@@ -18,7 +18,7 @@ class Home extends Component {
 			fetchStatuses: Object.fromEntries(services.names.map(sName => [sName, statuses.PENDING])),
 			data: Object.fromEntries(services.names.map(sName => [sName, null]))
 		}
-		this.fetchAborter = new AbortController()
+		if (typeof window !== 'undefined') this.fetchAborter = new AbortController()
 	}
 
 	async componentDidMount() {
@@ -26,7 +26,7 @@ class Home extends Component {
 		const { services } = this.state
 		services.names.forEach(name => {
 			this.changeStatus(name, statuses.IN_PROGRESS)
-			fetch(`${apiUrl}/api/fetch/${name}`, { signal: this.fetchAborter.signal })
+			fetch(`${apiUrl}/api/fetch/${name}`, { signal: this.fetchAborter && this.fetchAborter.signal })
 				.then(res => res.json())
 				.catch(() => this.changeStatus(name, statuses.COMPLETED_ERRONEOUSLY))
 				.then(data => {
@@ -38,7 +38,7 @@ class Home extends Component {
 	}
 
 	componentWillUnmount() {
-		this.fetchAborter.abort()
+		if (typeof window !== 'undefined') this.fetchAborter.abort()
 	}
 
 	changeStatus(name, newStatus) {
