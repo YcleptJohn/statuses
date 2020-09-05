@@ -3,6 +3,8 @@ import style from './style.scss';
 import ModularCssHelper from '../../lib/ModularCssHelper.js';
 import DetailedPanelBody from '../detailedPanelBody';
 import statuses from '../../lib/statusConstants.js';
+import { FontAwesomeIcon } from '@aduh95/preact-fontawesome'
+import { faArrowLeft, faCircleNotch } from '@fortawesome/free-solid-svg-icons'
 
 const c = new ModularCssHelper(style)
 
@@ -18,13 +20,13 @@ const DetailedPanel = (props) => {
         <header class={c.ss(`card-header ${headerColour}`)}>
           <a href='/' class={c.ss('has-text-grey-dark')}>
             <span class={c.ss('icon is-large')}>
-              <i class={c.ss('fas fa-arrow-left fa-lg')} />
+              <FontAwesomeIcon icon={faArrowLeft} size='lg' />
             </span>
           </a>
 
           <p class={c.ss('card-header-title is-centered')}>
             {service.meta.providerName}
-            {fetchStatus === statuses.IN_PROGRESS && <i class={c.ss('fas fa-circle-notch fa-spin fa-fw has-text-primary ml-2')} />}
+            {fetchStatus === statuses.IN_PROGRESS && <FontAwesomeIcon spin fixedWidth icon={faCircleNotch} className={c.ss('has-text-primary ml-2')} />}
           </p>
           <span class={c.ss('icon is-large')} />
         </header>

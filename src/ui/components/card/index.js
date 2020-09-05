@@ -4,6 +4,8 @@ import ModularCssHelper from '../../lib/ModularCssHelper.js';
 import IncidentsSummary from '../incidentsSummary';
 import DownDetectorSummary from '../downDetectorSummary';
 import statuses from '../../lib/statusConstants.js';
+import { FontAwesomeIcon } from '@aduh95/preact-fontawesome'
+import { faCircleNotch } from '@fortawesome/free-solid-svg-icons'
 
 const c = new ModularCssHelper(style)
 
@@ -19,7 +21,7 @@ const Card = ({ meta, status, data }) => {
         <header class={c.ss(`card-header ${headerColour}`)}>
           <p class={c.ss('card-header-title is-centered')}>
             {meta.providerName}
-            {status === statuses.IN_PROGRESS && <i class={c.ss('fas fa-circle-notch fa-spin fa-fw has-text-primary ml-2')} />}
+            {status === statuses.IN_PROGRESS && <FontAwesomeIcon icon={faCircleNotch} spin fixedWidth className={c.ss('has-text-primary ml-2')} />}
           </p>
         </header>
         <div class={c.ss('card-content')}>

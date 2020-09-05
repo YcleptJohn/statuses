@@ -4,13 +4,15 @@ import ModularCssHelper from '../../lib/ModularCssHelper.js';
 import CollapsibleSection from '../collapsibleSection';
 import DetailedIncident from '../detailedIncident';
 import statuses from '../../lib/statusConstants.js';
+import { FontAwesomeIcon } from '@aduh95/preact-fontawesome'
+import { faCircleNotch } from '@fortawesome/free-solid-svg-icons'
 
 const c = new ModularCssHelper(style)
 
 const DetailedPanelBody = ({ serviceKey, service, fetchStatus, data }) => {
   if (fetchStatus === statuses.IN_PROGRESS) return (
     <div class={c.ss('has-text-primary has-text-centered')}>
-      <i class={c.ss('fas fa-circle-notch fa-spin fa-5x')} />
+      <FontAwesomeIcon icon={faCircleNotch} spin size='5x' />
       <p class={c.ss('is-size-4 is-italic my-2')}>Checking status...</p>
     </div>
   )
