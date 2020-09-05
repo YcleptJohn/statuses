@@ -10,7 +10,7 @@ import { faCircleNotch } from '@fortawesome/free-solid-svg-icons'
 const c = new ModularCssHelper(style)
 
 const Card = ({ meta, status, data }) => {
-  let headerColour = 'has-background-grey-light'
+  let headerColour = 'has-background-grey-lighter'
   if (status === statuses.COMPLETED_SUCCESSFULLY) {
     headerColour = 'has-background-success'
     if (data.ongoingIncidents.length >= 1) headerColour = 'has-background-danger'
