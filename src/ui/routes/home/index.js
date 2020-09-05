@@ -21,7 +21,7 @@ class Home extends Component {
 	}
 
 	async componentDidMount() {
-		setPageTitle('Tech Status')
+		setPageTitle('statuses.tech: Simplifying status monitoring across DevOps platforms and tools')
 		const { services } = this.state
 		services.names.forEach(name => {
 			this.changeStatus(name, statuses.IN_PROGRESS)
