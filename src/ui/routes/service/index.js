@@ -8,7 +8,7 @@ import { setPageTitle } from '../../lib/DynamicPageMeta.js';
 import { route } from 'preact-router';
 
 const c = new ModularCssHelper(style)
-const apiUrl = process.env.NODE_ENV === 'production' ? 'https://statuses-dot-tech.herokuapp.com' : 'http://localhost:9999'
+const apiUrl = process.env.NODE_ENV === 'production' ? 'https://statuses.tech' : 'http://localhost:9999'
 
 export default class Service extends Component {
   constructor(props) {

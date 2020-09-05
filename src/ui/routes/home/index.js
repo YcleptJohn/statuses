@@ -7,7 +7,7 @@ import { setPageTitle } from '../../lib/DynamicPageMeta.js';
 import statuses from '../../lib/statusConstants.js'
 
 const c = new ModularCssHelper(style)
-const apiUrl = process.env.NODE_ENV === 'production' ? 'https://statuses-dot-tech.herokuapp.com' : 'http://localhost:9999'
+const apiUrl = process.env.NODE_ENV === 'production' ? 'https://statuses.tech' : 'http://localhost:9999'
 
 class Home extends Component {
 	constructor() {
