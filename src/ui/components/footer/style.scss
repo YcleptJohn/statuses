@@ -1,0 +1,122 @@
+@import "../../sass/brand.scss";
+@import "../../../../node_modules/bulma/sass/layout/footer.sass";
+@import "../../../../node_modules/bulma/sass/components/level.sass";
+@import "../../../../node_modules/bulma/sass/elements/button.sass";
+@import "../../../../node_modules/bulma/sass/elements/icon.sass";
+
+.compact-footer {
+  margin-top: 40px;
+  height: 60px;
+  padding: 0;
+  transition: height ease 0.3s;
+  z-index: 10;
+}
+
+.compact-footer.is-expanded {
+  height: 200px;
+  // margin-top: -120px;
+}
+
+.creator-credit-wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.created-by {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.collapse-button-wrapper {
+  position: relative;
+  height: 1px;
+  width: 100%;
+  background-color: $grey-lighter;
+}
+
+.collapse-button-wrapper:hover,
+.collapse-button-wrapper:active,
+.collapse-button-wrapper:focus-within {
+  background-color: $grey-light;
+}
+
+.collapse-button {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  top: -15px;
+  padding: 12px !important;
+}
+
+.flippable-icon {
+  transition: transform ease 0.3s;
+}
+
+.flippable-icon.is-flipped {
+  transform: rotate(180deg);
+}
+
+.expanded-content {
+  display: none;
+}
+
+.expanded-content.is-expanded {
+  display: block;
+}
+
+.circle {
+  display: inline-flex;
+  height: 45px;
+  width: 45px;
+  justify-content: center;
+  align-items: center;
+  background-color: $primary;
+  border-radius: 50%;
+  color: $white-bis !important;
+  margin-left: 10px;
+  margin-right: 10px;
+  transition: all 0.2s;
+}
+.circle:hover {
+  filter: drop-shadow(3px 3px 3px $grey-light);
+  transform: scale(1.1);
+}
+
+.circle-email.is-expanded {
+  border-radius: 5px;
+  width: 175px;
+}
+
+.email-reveal {
+  display: none;
+  overflow: hidden;
+  user-select: all;
+}
+
+.email-reveal.show {
+  display: inline;
+}
+
+.email-actions {
+  transform: scale(0);
+  height: 0;
+  overflow: hidden;
+  transition: all 0.3s;
+  display: flex;
+  align-items: center;
+}
+
+.email-action {
+  transition: all 0.2s;
+}
+
+.email-action:hover {
+  filter: drop-shadow(3px 3px 2px $grey-light);
+  transform: scale(1.025);
+}
+
+.email-actions.show {
+  height: 45px;
+  transform: scale(1);
+}

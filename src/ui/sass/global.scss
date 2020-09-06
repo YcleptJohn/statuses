@@ -4,3 +4,13 @@
 @import "../../../node_modules/bulma/sass/base/_all.sass";
 @import "../../../node_modules/bulma/sass/helpers/_all.sass";
 @import "./utils.scss";
+
+#app {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+#main-content {
+  flex: 1;
+}
