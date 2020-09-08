@@ -71,7 +71,13 @@ const Footer = () => {
             </span>
           </div>
           <div class={c.ss(`expanded-content ${isExpanded ? 'is-expanded' : ''}`)}>
-            <a class={c.ss('circle circle-link')} title='LinkedIn | JohnJosephTaylor' href='https://www.linkedin.com/in/johnjosephtaylor/'>
+            <a
+              class={c.ss('circle circle-link')}
+              title='LinkedIn | JohnJosephTaylor'
+              href='https://www.linkedin.com/in/johnjosephtaylor/'
+              target='_blank'
+              rel='noreferrer'
+            >
               <span class={c.ss('icon is-medium')}>
                 <FontAwesomeIcon icon={faLinkedin} size='lg' />
               </span>
@@ -84,7 +90,13 @@ const Footer = () => {
                 <span class={c.ss('is-size-7')}>johntaylorjjt@gmail.com</span>
               </div>
             </div>
-            <a class={c.ss('circle circle-link')} title='Github | YcleptJohn' href='https://github.com/YcleptJohn'>
+            <a
+              class={c.ss('circle circle-link')}
+              title='Github | YcleptJohn'
+              href='https://github.com/YcleptJohn'
+              target='_blank'
+              rel='noreferrer'
+            >
               <span class={c.ss('icon is-medium')}>
                 <FontAwesomeIcon icon={faGithub} size='lg' />
               </span>
