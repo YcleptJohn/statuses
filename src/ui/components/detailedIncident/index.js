@@ -24,15 +24,17 @@ const DetailedIncident = ({ incident, type, index, isLastChild }) => {
               </span>}
               <span class={c.ss('has-text-weight-bold')}>{field.uiText}</span>
               &nbsp;-&nbsp;
-              <span>
-                {value.value || value}
-              </span>
-              {value.subValue && (
-                <>
-                  <span class={c.ss('has-text-primary has-text-weight-bold')}>&nbsp;/&nbsp;</span>
-                  <span class={c.ss('is-italic has-text-grey')}>{value.subValue}</span>
-                </>
-              )}
+              <div>
+                <span>
+                  {value.value || value}
+                </span>
+                {value.subValue && (
+                  <>
+                    <span class={c.ss('has-text-primary has-text-weight-bold')}>&nbsp;/&nbsp;</span>
+                    <span class={c.ss('is-italic has-text-grey')}>{value.subValue}</span>
+                  </>
+                )}
+              </div>
             </p>
           )
         })}
