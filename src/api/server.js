@@ -2,6 +2,8 @@ const express = require('express')
 const path = require('path')
 const helmet = require('helmet')
 const cors = require('cors')
+const secure = require('express-force-https');
+
 
 const router = express()
 
@@ -9,6 +11,7 @@ router.use(express.static(path.resolve(__dirname, '..', '..', 'build')))
 router.use(express.json())
 router.use(helmet())
 router.use(cors())
+router.use(secure)
 
 router.route('/api/*')
   .get((req, res, next) => {
