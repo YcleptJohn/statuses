@@ -7,6 +7,7 @@ import { faChevronUp, faAt } from '@fortawesome/free-solid-svg-icons'
 import { faCopy, faPaperPlane } from '@fortawesome/free-regular-svg-icons'
 import Logo from '../../components/logo'
 import { useState } from 'preact/hooks'
+import * as clipboard from "clipboard-polyfill/text";
 import statuses from '../../lib/statusConstants.js'
 
 const c = new ModularCssHelper(style)
@@ -36,7 +37,7 @@ const Footer = () => {
   })
 
   const copyEmail = () => {
-    navigator.clipboard.writeText('johntaylorjjt@gmail.com')
+    clipboard.writeText('johntaylorjjt@gmail.com')
       .then(() => setCopyStatus(statuses.COMPLETED_SUCCESSFULLY))
       .catch(() => setCopyStatus(statuses.COMPLETED_ERRONEOUSLY))
   }
