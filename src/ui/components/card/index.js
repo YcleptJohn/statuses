@@ -32,7 +32,7 @@ const Card = ({ meta, status, data }) => {
                 <progress class={c.ss('progress is-small is-primary')} max='100' />
                 <div class={c.ss('loading-text')}>
                   <img src={`/assets/logo-loading.gif`} class={c.ss('loading-logo')} />
-                  <h5 class={c.ss('title is-size-5 has-text-grey-dark is-italic')}>Checking status...</h5>
+                  <h5 class={c.ss('title is-size-5 has-text-grey-dark is-italic ml-2')}>Checking status...</h5>
                 </div>
               </>
             ) : (
