@@ -23,7 +23,13 @@ const Card = ({ meta, status, data }) => {
         </header>
         <div class={c.ss('card-content')}>
           <div class='has-text-centered'>
-            <img src={`/assets/${meta.providerLogo}`} width='256' height='256' class={c.ss('scaled-logo')} />
+            <img
+              src={`/assets/${meta.providerLogo}`}
+              width='256'
+              height='256'
+              class={c.ss('scaled-logo')}
+              alt={`${meta.providerKey}-logo`}
+            />
           </div>
           <div class={c.ss(`content ${status === statuses.IN_PROGRESS ? 'content-loading' : ''}`)}>
             {status === statuses.IN_PROGRESS
@@ -31,7 +37,7 @@ const Card = ({ meta, status, data }) => {
               <>
                 <progress class={c.ss('progress is-small is-primary')} max='100' />
                 <div class={c.ss('loading-text')}>
-                  <img src={`/assets/logo-loading.gif`} class={c.ss('loading-logo')} />
+                  <img src={`/assets/logo-loading.gif`} class={c.ss('loading-logo')} alt={`${meta.providerKey}-status-loading`} />
                   <h5 class={c.ss('title is-size-5 has-text-grey-dark is-italic ml-2')}>Checking status...</h5>
                 </div>
               </>
