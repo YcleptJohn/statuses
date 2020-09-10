@@ -29,7 +29,6 @@ const DetailedPanel = (props) => {
 
           <p class={c.ss('card-header-title is-centered')}>
             {service.meta.providerName}
-            {fetchStatus === statuses.IN_PROGRESS && <FontAwesomeIcon spin fixedWidth icon={faCircleNotch} className={c.ss('has-text-primary ml-2')} />}
           </p>
           <span class={c.ss('icon is-large')} />
         </header>
@@ -46,9 +45,11 @@ const DetailedPanel = (props) => {
             <div class={c.ss('column is-three-quarters')}>
               {fetchStatus === statuses.IN_PROGRESS
               ? (
-                <div class={c.ss('vertical-loading')}>
-                  <h4 class={c.ss('is-size-4 has-text-centered is-italic')}>{`Fetching ${service.meta.providerName} status...`}</h4>
-                  <progress class={c.ss('progress is-primary')} max='100' />
+              <div class={c.ss('vertical-loading')}>
+                  <div class={c.ss('loading-text m-2')}>
+                    <img src={`/assets/logo-loading.gif`} class={c.ss('loading-logo')} alt={`${service.meta.providerKey}-status-loading`} />
+                    <h5 class={c.ss('title is-size-5 has-text-grey-dark is-italic ml-2')}>Checking status...</h5>
+                  </div>
                 </div>
               ) : (
                 <>
