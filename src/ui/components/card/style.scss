@@ -16,13 +16,19 @@
   }
 }
 
+.content-loading {
+  height: 130px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+
 .loading-logo {
   width: 35px;
   height: 35px;
 }
 
 .loading-text {
-  height: 94px;
   display: flex;
   flex-direction: row;
   align-items: center;

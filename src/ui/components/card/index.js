@@ -25,7 +25,7 @@ const Card = ({ meta, status, data }) => {
           <div class='has-text-centered'>
             <img src={`/assets/${meta.providerLogo}`} width='256' height='256' class={c.ss('scaled-logo')} />
           </div>
-          <div class={c.ss('content')}>
+          <div class={c.ss(`content ${status === statuses.IN_PROGRESS ? 'content-loading' : ''}`)}>
             {status === statuses.IN_PROGRESS
             ? (
               <>
