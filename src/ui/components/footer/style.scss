@@ -45,16 +45,22 @@
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
+  -webkit-transform: -webkit-translateX(-50%);
   top: -15px;
   padding: 12px !important;
+
+  // Fixes icon alignment in safari
+  display: flex;
+  flex-direction: column;
 }
 
 .flippable-icon {
-  transition: transform ease 0.3s;
+  transition: transform -webkit-transform ease 0.3s;
 }
 
 .flippable-icon.is-flipped {
   transform: rotate(180deg);
+  -webkit-transform: -webkit-rotate(180deg);
 }
 
 .expanded-content {
@@ -80,6 +86,7 @@
 }
 .circle:hover {
   filter: drop-shadow(3px 3px 3px $grey-light);
+  -webkit-filter: drop-shadow(3px 3px 3px $grey-light);
   transform: scale(1.1);
 }
 
@@ -113,6 +120,7 @@
 
 .email-action:hover {
   filter: drop-shadow(3px 3px 2px $grey-light);
+  -webkit-filter: drop-shadow(3px 3px 2px $grey-light);
   transform: scale(1.025);
 }
 
