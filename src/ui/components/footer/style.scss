@@ -82,7 +82,9 @@
   color: $white-bis !important;
   margin-left: 10px;
   margin-right: 10px;
-  transition: all 0.2s;
+  transition-property: filter, transform, border-radius, width;
+  transition-duration: 0.3s;
+  transition-delay: 0s;
 }
 .circle:hover {
   filter: drop-shadow(3px 3px 3px $grey-light);
