@@ -8,7 +8,7 @@ import statuses from '../../lib/statusConstants.js';
 const c = new ModularCssHelper(style)
 
 const Card = ({ meta, status, data }) => {
-  let headerColour = 'has-background-grey-lighter'
+  let headerColour = 'bg-loading-gradient'
   if (status === statuses.COMPLETED_SUCCESSFULLY) {
     headerColour = 'has-background-success'
     if (data.ongoingIncidents.length >= 1) headerColour = 'has-background-danger'
