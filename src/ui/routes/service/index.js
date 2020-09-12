@@ -54,9 +54,6 @@ export default class Service extends Component {
     return (
       <div class={c.ss('container mt-3')}>
         <DetailedPanel {...this.state} />
-        <CollapsibleBox id={'first-cb'} />
-        <CollapsibleBox id={'second-cb'} />
-        <CollapsibleBox id={'third-cb'} />
       </div>
     )
   }

@@ -1,60 +1,50 @@
 import { h } from 'preact'
 import style from './style.scss'
 import ModularCssHelper from '../../lib/ModularCssHelper.js'
-import { useState } from 'preact/hooks'
+import { useState, useEffect } from 'preact/hooks'
 import { FontAwesomeIcon } from '@aduh95/preact-fontawesome'
 import { faChevronUp } from '@fortawesome/free-solid-svg-icons'
 const c = new ModularCssHelper(style)
 
-const CollapsibleBox = ({ id }) => {
+const CollapsibleBox = ({ id, header, footerItems, children }) => {
   const [isCollapsed, setCollapsed] = useState(false)
 
   const toggleCollapse = () => setCollapsed((prev) => {
     const element = document.querySelector(`#collapsible-section-${id}`)
+    console.log(element.style.maxHeight)
     if (element.style.maxHeight) element.style.maxHeight = null
     else element.style.maxHeight = `${element.scrollHeight}px`
     return !prev
   })
 
+  useEffect(() => {
+    toggleCollapse()
+  }, [])
+
   return (
     <div class={c.ss('card collapsible-box')}>
-      <header class={c.ss('card-header')} onClick={toggleCollapse}>
-        <p class={c.ss('card-header-title')}>
-          Header
+      <header class={c.ss(`card-header ${header && header.wrapperClasses}`)} onClick={toggleCollapse}>
+        <p class={c.ss(`card-header-title ${header && header.textClasses}`)}>
+          {header && header.text || 'Header'}
         </p>
         <div class={c.ss(`card-header-icon ${isCollapsed && 'has-text-grey-light'}`)}>
           <a>
             <span class={c.ss('icon')}>
-              <FontAwesomeIcon icon={faChevronUp} className={c.ss(`flippable-icon ${isCollapsed && 'is-flipped'}`)} />
+              <FontAwesomeIcon icon={faChevronUp} className={c.ss(`flippable-icon ${!isCollapsed && 'is-flipped'}`)} />
             </span>
           </a>
         </div>
       </header>
-      <div id={`collapsible-section-${id}`} class={c.ss(`collapsible-section ${!isCollapsed && 'show'}`)}>
+      <div id={`collapsible-section-${id}`} class={c.ss(`collapsible-section`)}>
         <div class={c.ss('card-content')}>
-          I will collapse soon
-          I will collapse soon
-          I will collapse soon
-          I will collapse soon
-          I will collapse soon
-          I will collapse soon
-          I will collapse soon
-          I will collapse soon
-          I will collapse soon
-          I will collapse soon
-          I will collapse soon
-          I will collapse soon
-          I will collapse soon
-          I will collapse soon
-          I will collapse soon
-          I will collapse soon
-          I will collapse soon
-          I will collapse soon
-          I will collapse soon
-          I will collapse soon
-          I will collapse soon
+          {children}
         </div>
-        <footer class={c.ss('card-footer')}>Footer</footer>
+        <footer class={c.ss('card-footer')}>
+          {footerItems && footerItems.map(item => {
+            if (item.text && item.link) return <a href={item.link} class={c.ss('card-footer-item')}>{item.text}</a>
+            if (item.text && item.func) return <a class={c.ss('card-footer-item')} onClick={item.func}>{item.text}</a>
+          })}
+        </footer>
       </div>
     </div>
   )

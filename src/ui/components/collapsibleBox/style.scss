@@ -15,11 +15,7 @@
 }
 
 .collapsible-section {
-  max-height: 0px;
   overflow: hidden;
+  max-height: 0px;
   transition: max-height 0.3s;
-}
-
-.collapsible-section.show {
-  height: 300px;
 }
