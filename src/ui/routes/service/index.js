@@ -4,6 +4,7 @@ import ModularCssHelper from '../../lib/ModularCssHelper.js';
 import Services from '../../lib/Services.js'
 import statuses from '../../lib/statusConstants.js'
 import DetailedPanel from '../../components/detailedPanel';
+import CollapsibleBox from '../../components/collapsibleBox';
 import { setPageTitle } from '../../lib/DynamicPageMeta.js';
 import { route } from 'preact-router';
 
@@ -53,6 +54,9 @@ export default class Service extends Component {
     return (
       <div class={c.ss('container mt-3')}>
         <DetailedPanel {...this.state} />
+        <CollapsibleBox id={'first-cb'} />
+        <CollapsibleBox id={'second-cb'} />
+        <CollapsibleBox id={'third-cb'} />
       </div>
     )
   }
