@@ -12,7 +12,7 @@ const c = new ModularCssHelper(style)
 const DetailedPanel = (props) => {
   const { serviceKey, fetchStatus, service, data } = props
 
-  let headerColour = 'has-background-grey-lighter'
+  let headerColour = 'bg-loading-gradient'
   if (fetchStatus === statuses.COMPLETED_SUCCESSFULLY) {
     headerColour = 'has-background-success'
     if (data.ongoingIncidents.length >= 1) headerColour = 'has-background-danger'
