@@ -1,9 +1,10 @@
 @import "../../sass/brand.scss";
 @import "../../../../node_modules/bulma/sass/components/card.sass";
 @import "../../../../node_modules/bulma/sass/elements/icon.sass";
+@import "../../../../node_modules/bulma/sass/grid/columns.sass";
 
 .scaled-logo {
-  width: 75%;
+  width: 50%;
 
   @media only screen and (max-width: 768px) {
     width: 25%;
@@ -41,4 +42,10 @@
   background: linear-gradient(45deg, $grey-light, $grey-lighter);
   background-size: 200% 200%;
   animation: bg-loading-gradient 2s ease infinite;
+}
+
+.vertical-center {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
