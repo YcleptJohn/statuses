@@ -11,7 +11,6 @@ const CollapsibleBox = ({ id, header, footerItems, children }) => {
 
   const toggleCollapse = () => setCollapsed((prev) => {
     const element = document.querySelector(`#collapsible-section-${id}`)
-    console.log(element.style.maxHeight)
     if (element.style.maxHeight) element.style.maxHeight = null
     else element.style.maxHeight = `${element.scrollHeight}px`
     return !prev
