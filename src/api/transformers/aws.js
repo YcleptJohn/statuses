@@ -59,13 +59,25 @@ aws._transformIncident = (incident) => {
   }
 }
 
+aws._combineDuplicates = (incidents) => {
+  const deduped = {}
+  incidents.forEach(incident => {
+    if (Object.keys(deduped).includes(incident.shortSummary)) {
+      deduped[incident.shortSummary].affectedRegions.push(...incident.affectedRegions)
+    } else {
+      deduped[incident.shortSummary] = incident
+    }
+  })
+  return Object.keys(deduped).map(key => deduped[key])
+}
+
 aws.v1 = (raw, ddData) => {
   const [ongoing, recent] = aws._splitIncidents(raw)
 
   return {
     uiMeta: aws._uiMeta(config),
-    ongoingIncidents: ongoing && ongoing.map(aws._transformIncident) || null,
-    recentIncidents: recent && recent.map(aws._transformIncident) || null,
+    ongoingIncidents: ongoing && aws._combineDuplicates(ongoing.map(aws._transformIncident)) || null,
+    recentIncidents: recent && aws._combineDuplicates(recent.map(aws._transformIncident)) || null,
     downDetectorData: ddParser.jsonOverview(ddData)
   }
 }
