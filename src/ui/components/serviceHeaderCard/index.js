@@ -18,7 +18,7 @@ const ServiceHeaderCard = ({ serviceKey, fetchStatus, service, data }) => {
   }
 
   return (
-    <div class={c.ss('card')}>
+    <div class={c.ss('card mb-5')}>
       <header class={c.ss(`card-header ${headerColour}`)}>
         <a href='/' class={c.ss('has-text-grey-dark')}>
           <span class={c.ss('icon is-large')}>
