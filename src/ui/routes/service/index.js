@@ -3,9 +3,11 @@ import style from './style.scss';
 import ModularCssHelper from '../../lib/ModularCssHelper.js';
 import Services from '../../lib/Services.js'
 import statuses from '../../lib/statusConstants.js'
-import DetailedPanel from '../../components/detailedPanel';
 import { setPageTitle } from '../../lib/DynamicPageMeta.js';
 import { route } from 'preact-router';
+import ServiceHeaderCard from '../../components/serviceHeaderCard';
+import OngoingCollapsibleCard from '../../components/ongoingCollapsibleCard';
+import RecentCollapsibleCard from '../../components/recentCollapsibleCard';
 
 const c = new ModularCssHelper(style)
 const apiUrl = process.env.NODE_ENV === 'production' ? 'https://statuses.tech' : 'http://localhost:9999'
@@ -52,7 +54,9 @@ export default class Service extends Component {
   render() {
     return (
       <div class={c.ss('container mt-3')}>
-        <DetailedPanel {...this.state} />
+        <ServiceHeaderCard {...this.state} />
+        <OngoingCollapsibleCard {...this.state} />
+        <RecentCollapsibleCard {...this.state} />
       </div>
     )
   }

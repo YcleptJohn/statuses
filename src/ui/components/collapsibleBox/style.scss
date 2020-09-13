@@ -1,0 +1,21 @@
+@import "../../sass/brand.scss";
+@import "../../../../node_modules/bulma/sass/components/card.sass";
+
+.collapsible-box {
+  margin-top: 1em;
+  margin-bottom: 1em;
+}
+
+.flippable-icon {
+  transition: transform 0.3s;
+}
+
+.flippable-icon.is-flipped {
+  transform: rotate(180deg);
+}
+
+.collapsible-section {
+  overflow: hidden;
+  max-height: 0px;
+  transition: max-height 0.3s;
+}

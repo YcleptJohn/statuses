@@ -1,14 +1,10 @@
 @import "../../sass/brand.scss";
 @import "../../../../node_modules/bulma/sass/components/card.sass";
 @import "../../../../node_modules/bulma/sass/elements/icon.sass";
-@import "../../../../node_modules/bulma/sass/grid//columns.sass";
-@import "../../../../node_modules/bulma/sass/elements/image.sass";
-@import "../../../../node_modules/bulma/sass/elements/progress.sass";
-
+@import "../../../../node_modules/bulma/sass/grid/columns.sass";
 
 .scaled-logo {
   width: 50%;
-  height: 50%;
 
   @media only screen and (max-width: 768px) {
     width: 25%;
@@ -16,15 +12,24 @@
   }
 }
 
-.content-loading {
-  height: 130px;
+.vertical-loading {
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
+  height: 100%;
+}
 
-  @media only screen and (max-width: 768px) {
-    height: 60px;
-  }
+.loading-logo {
+  width: 35px;
+  height: 35px;
+}
+
+.loading-text {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  margin: 10px;
 }
 
 @keyframes bg-loading-gradient {
@@ -39,14 +44,8 @@
   animation: bg-loading-gradient 2s ease infinite;
 }
 
-.loading-logo {
-  width: 35px;
-  height: 35px;
-}
-
-.loading-text {
+.vertical-center {
   display: flex;
-  flex-direction: row;
-  align-items: center;
+  flex-direction: column;
   justify-content: center;
 }
