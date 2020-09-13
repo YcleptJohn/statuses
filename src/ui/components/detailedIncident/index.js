@@ -13,7 +13,7 @@ const DetailedIncident = ({ incident, type, index, isLastChild }) => {
   return (
     <>
       <h6 class={c.ss('title is-6 has-text-primary')}>{incident.shortSummary}</h6>
-      <div class={c.ss('')}>
+      <div>
         {metaFields.map(field => {
           if (!field.exists(incident)) return null
           const value = field.extract(incident)
