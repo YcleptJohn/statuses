@@ -16,10 +16,6 @@ const CollapsibleBox = ({ id, header, footerItems, children }) => {
     return !prev
   })
 
-  useEffect(() => {
-    toggleCollapse()
-  }, [])
-
   return (
     <div class={c.ss('card collapsible-box')}>
       <header class={c.ss(`card-header ${header && header.wrapperClasses || ''}`)} onClick={toggleCollapse}>
