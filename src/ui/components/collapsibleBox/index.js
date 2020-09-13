@@ -21,9 +21,9 @@ const CollapsibleBox = ({ id, header, footerItems, children }) => {
   }, [])
 
   return (
-    <div class={c.ss('card collapsible-box')}>
-      <header class={c.ss(`card-header ${header && header.wrapperClasses}`)} onClick={toggleCollapse}>
-        <p class={c.ss(`card-header-title ${header && header.textClasses}`)}>
+    <div class={c.ss('card collapsible-box mt-5')}>
+      <header class={c.ss(`card-header ${header && header.wrapperClasses || ''}`)} onClick={toggleCollapse}>
+        <p class={c.ss(`card-header-title ${header && header.textClasses || ''}`)}>
           {header && header.text || 'Header'}
         </p>
         <div class={c.ss(`card-header-icon ${isCollapsed && 'has-text-grey-light'}`)}>
