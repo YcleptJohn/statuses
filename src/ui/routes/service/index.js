@@ -4,9 +4,9 @@ import ModularCssHelper from '../../lib/ModularCssHelper.js';
 import Services from '../../lib/Services.js'
 import statuses from '../../lib/statusConstants.js'
 import DetailedPanel from '../../components/detailedPanel';
-import CollapsibleBox from '../../components/collapsibleBox';
 import { setPageTitle } from '../../lib/DynamicPageMeta.js';
 import { route } from 'preact-router';
+import ServiceHeaderCard from '../../components/serviceHeaderCard';
 
 const c = new ModularCssHelper(style)
 const apiUrl = process.env.NODE_ENV === 'production' ? 'https://statuses.tech' : 'http://localhost:9999'
@@ -54,6 +54,7 @@ export default class Service extends Component {
     return (
       <div class={c.ss('container mt-3')}>
         <DetailedPanel {...this.state} />
+        <ServiceHeaderCard {...this.state} />
       </div>
     )
   }
