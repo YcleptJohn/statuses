@@ -9,7 +9,15 @@ const router = express()
 
 router.use(express.static(path.resolve(__dirname, '..', '..', 'build')))
 router.use(express.json())
-router.use(helmet())
+router.use(
+  helmet({
+    contentSecurityPolicy: {
+      defaultSrc: ["'self'"],
+      scriptSrcAttr: ["'self'"],
+      scriptSrc: ["'self'"]
+    }
+  })
+)
 router.use(cors())
 router.use(secure)
 
