@@ -4,11 +4,8 @@ const helmet = require('helmet')
 const cors = require('cors')
 const secure = require('express-force-https');
 
-
 const router = express()
 
-router.use(express.static(path.resolve(__dirname, '..', '..', 'build')))
-router.use(express.json())
 router.use(
   helmet({
     contentSecurityPolicy: {
@@ -21,7 +18,6 @@ router.use(
         imgSrc: ["'self'", 'data:'],
         objectSrc: ["'none'"],
         scriptSrc: ["'self'"],
-        scriptSrcAttr: ["'self'"],
         styleSrc: ["'self'", 'https:', "'unsafe-inline'"],
         upgradeInsecureRequests: []
       }
@@ -30,6 +26,8 @@ router.use(
 )
 router.use(cors())
 router.use(secure)
+router.use(express.static(path.resolve(__dirname, '..', '..', 'build')))
+router.use(express.json())
 
 router.route('/api/*')
   .get((req, res, next) => {
