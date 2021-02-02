@@ -2,7 +2,8 @@ const express = require('express')
 const path = require('path')
 const helmet = require('helmet')
 const cors = require('cors')
-const secure = require('express-force-https');
+const secure = require('express-force-https')
+const cache = require('./lib/cache')
 
 const router = express()
 
@@ -28,20 +29,33 @@ router.route('/api/*')
 
 router.get('/api/fetch/:key', async (req, res) => {
   if (!req.params || !req.params.key) return res.status(400).send({ error: 'No fetcher parameter' })
+  const key = req.params.key
+  const cachedResult = await cache.get(key)
+  if (cachedResult) {
+    cache.resetExpiry(key)
+    return res.send(cachedResult)
+  }
+
   let fetcher 
   try {
-    fetcher = require(`./fetchers/${req.params.key}`)
+    fetcher = require(`./fetchers/${key}`)
   } catch (e) {
-    console.error('Failed to find fetcher', req.params.key)
+    console.error('Failed to find fetcher', key)
   }
-  if (!fetcher) return res.status(404).send({ error: `No fetcher found for param: ${req.params.key}` })
+  if (!fetcher) return res.status(404).send({ error: `No fetcher found for param: ${key}` })
 
   let result
   try {
     result = await fetcher.fetch()
   } catch (e) {
     console.error('Failed to fetch any data', e)
+    // todo: probably throw/handle the error better
   }
+
+  if (result) {
+    cache.set(key, result)
+  }
+
   return res.send(result)
 })
 

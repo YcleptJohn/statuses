@@ -45,6 +45,7 @@
     "preact": "^10.3.2",
     "preact-render-to-string": "^5.1.4",
     "preact-router": "^3.2.1",
+    "redis": "^3.0.2",
     "require-all": "^3.0.0",
     "rss-parser": "^3.9.0",
     "sass-loader": "^10.0.1"
