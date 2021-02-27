@@ -13,7 +13,7 @@ ddParser.jsonOverview = (ddHtml) => {
 }
 
 ddParser._getReportVolume = (text) => {
-  if (text.toLowerCase().includes('no problems at')) return 'low'
+  if (text.toLowerCase().includes('no current problems at')) return 'low'
   if (text.toLowerCase().includes('possible problems at')) return 'medium'
   if (text.toLowerCase().includes('problems at')) return 'high'
 }

@@ -11,8 +11,9 @@ const promiseClient = Object.fromEntries(
   })
 )
 
-cache.set = async (key, value) => {
+cache.set = async (key, value, expiry) => {
   if (typeof value === 'object') value = JSON.stringify(value)
+  if (expiry === false) return promiseClient.set(key, value)
   return promiseClient.set(key, value, 'EX', 60);
 }
 
