@@ -3,7 +3,7 @@ import style from './style.scss'
 import ModularCssHelper from '../../lib/ModularCssHelper.js'
 import { useState, useEffect } from 'preact/hooks'
 import { FontAwesomeIcon } from '@aduh95/preact-fontawesome'
-import { faChevronUp } from '@fortawesome/free-solid-svg-icons'
+import { faChevronUp } from '@fortawesome/free-solid-svg-icons/faChevronUp'
 const c = new ModularCssHelper(style)
 
 const CollapsibleBox = ({ id, header, footerItems, children }) => {

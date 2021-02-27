@@ -5,7 +5,7 @@ import CollapsibleSection from '../../components/collapsibleSection';
 import DetailedIncident from '../../components/detailedIncident';
 import statuses from '../../lib/statusConstants.js';
 import { FontAwesomeIcon } from '@aduh95/preact-fontawesome'
-import { faArrowLeft, faCircleNotch } from '@fortawesome/free-solid-svg-icons'
+import { faArrowLeft } from '@fortawesome/free-solid-svg-icons/faArrowLeft'
 
 const c = new ModularCssHelper(style)
 

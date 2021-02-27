@@ -4,7 +4,7 @@ import ModularCssHelper from '../../lib/ModularCssHelper.js';
 import Time from '../time.js';
 import { metaFields } from '../../lib/IncidentMetaFields.js';
 import { FontAwesomeIcon } from '@aduh95/preact-fontawesome'
-import { faLink } from '@fortawesome/free-solid-svg-icons'
+import { faLink } from '@fortawesome/free-solid-svg-icons/faLink'
 
 const c = new ModularCssHelper(style)
 

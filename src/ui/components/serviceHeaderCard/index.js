@@ -3,7 +3,7 @@ import style from './style.scss'
 import ModularCssHelper from '../../lib/ModularCssHelper.js'
 import statuses from '../../lib/statusConstants.js'
 import { FontAwesomeIcon } from '@aduh95/preact-fontawesome'
-import { faArrowLeft } from '@fortawesome/free-solid-svg-icons'
+import { faArrowLeft } from '@fortawesome/free-solid-svg-icons/faArrowLeft'
 import IncidentsSummary from '../incidentsSummary'
 import DownDetectorSummary from '../downDetectorSummary'
 

@@ -3,7 +3,10 @@ import style from './style.scss';
 import ModularCssHelper from '../../lib/ModularCssHelper.js';
 import { useState } from 'preact/hooks';
 import { FontAwesomeIcon } from '@aduh95/preact-fontawesome'
-import { faChevronRight, faChevronDown, faPlus, faMinus } from '@fortawesome/free-solid-svg-icons'
+import { faChevronRight } from '@fortawesome/free-solid-svg-icons/faChevronRight'
+import { faChevronDown } from '@fortawesome/free-solid-svg-icons/faChevronDown'
+import { faPlus } from '@fortawesome/free-solid-svg-icons/faPlus'
+import { faMinus } from '@fortawesome/free-solid-svg-icons/faMinus'
 
 const c = new ModularCssHelper(style)
 

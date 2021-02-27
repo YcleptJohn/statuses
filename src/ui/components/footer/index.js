@@ -1,10 +1,15 @@
 import { h } from 'preact'
 import style from './style.scss'
 import ModularCssHelper from '../../lib/ModularCssHelper.js'
+
 import { FontAwesomeIcon } from '@aduh95/preact-fontawesome'
-import { faLinkedin, faGithub } from '@fortawesome/free-brands-svg-icons'
-import { faChevronUp, faAt } from '@fortawesome/free-solid-svg-icons'
-import { faCopy, faPaperPlane } from '@fortawesome/free-regular-svg-icons'
+import { faLinkedin } from '@fortawesome/free-brands-svg-icons/faLinkedin'
+import { faGithub } from '@fortawesome/free-brands-svg-icons/faGithub'
+import { faChevronUp } from '@fortawesome/free-solid-svg-icons/faChevronUp'
+import { faAt } from '@fortawesome/free-solid-svg-icons/faAt'
+import { faCopy } from '@fortawesome/free-regular-svg-icons/faCopy'
+import { faPaperPlane } from '@fortawesome/free-regular-svg-icons/faPaperPlane'
+
 import Logo from '../../components/logo'
 import { useState } from 'preact/hooks'
 import * as clipboard from "clipboard-polyfill/text";

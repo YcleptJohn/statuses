@@ -1,11 +1,9 @@
 import moment from 'moment'
-import {
-  faHourglassStart,
-  faHourglassHalf,
-  faHourglassEnd,
-  faServer,
-  faGlobeAmericas
- } from '@fortawesome/free-solid-svg-icons'
+import { faHourglassStart } from '@fortawesome/free-solid-svg-icons/faHourglassStart'
+import { faHourglassHalf } from '@fortawesome/free-solid-svg-icons/faHourglassHalf'
+import { faHourglassEnd } from '@fortawesome/free-solid-svg-icons/faHourglassEnd'
+import { faServer } from '@fortawesome/free-solid-svg-icons/faServer'
+import { faGlobeAmericas } from '@fortawesome/free-solid-svg-icons/faGlobeAmericas'
 
 
 export const createTimeDisplay = (timeString) => {

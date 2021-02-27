@@ -2,7 +2,7 @@ import { h } from 'preact'
 import style from './style.scss'
 import ModularCssHelper from '../../lib/ModularCssHelper.js'
 import { FontAwesomeIcon } from '@aduh95/preact-fontawesome'
-import { faLayerGroup } from '@fortawesome/free-solid-svg-icons'
+import { faLayerGroup } from '@fortawesome/free-solid-svg-icons/faLayerGroup'
 
 const c = new ModularCssHelper(style)
 
